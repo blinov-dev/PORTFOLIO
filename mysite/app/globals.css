@@ -144,13 +144,19 @@ body {
 
 /* Theme toggle — Liquid Glass pill switch */
 .theme-toggle-track {
+  --toggle-width: 74px;
+  --toggle-height: 42px;
+  --toggle-padding: 4px;
+  --toggle-knob: 32px;
+  --toggle-shift: 32px;
+
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  width: 4.25rem;
-  height: 2.25rem;
-  padding: 0.2rem;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  padding: var(--toggle-padding);
   border-radius: 9999px;
   border: 1px solid hsl(var(--glass-border));
   box-shadow: var(--glass-shadow);
@@ -165,27 +171,30 @@ body {
 .theme-toggle-icon {
   position: relative;
   z-index: 2;
-  display: inline-flex;
+  display: flex;
+  height: 100%;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.25s ease, color 0.25s ease;
+  color: hsl(var(--muted-foreground));
+  transition: color 0.25s ease;
 }
 
-.theme-toggle-icon-sun {
-  justify-self: center;
+.theme-toggle-icon.is-active {
+  color: hsl(var(--primary-foreground));
 }
 
-.theme-toggle-icon-moon {
-  justify-self: center;
+.theme-toggle-icon-moon svg {
+  transform: translateX(-0.5px);
 }
 
 .theme-toggle-knob {
   position: absolute;
-  top: 0.2rem;
-  left: 0.2rem;
+  top: var(--toggle-padding);
+  left: var(--toggle-padding);
   z-index: 1;
-  width: 1.85rem;
-  height: 1.85rem;
+  width: var(--toggle-knob);
+  height: var(--toggle-knob);
   border-radius: 9999px;
   background: var(--gradient-primary);
   box-shadow: 0 0 14px hsl(var(--primary) / 0.35);
@@ -194,7 +203,7 @@ body {
 }
 
 .theme-toggle-knob[data-theme-state="dark"] {
-  transform: translateX(calc(4.25rem - 1.85rem - 0.4rem));
+  transform: translateX(var(--toggle-shift));
   box-shadow: 0 0 16px hsl(var(--secondary) / 0.35);
 }
 

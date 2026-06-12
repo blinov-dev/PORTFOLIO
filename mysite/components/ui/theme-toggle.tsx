@@ -14,7 +14,7 @@ function SunIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="3"
       strokeLinecap="round"
       aria-hidden="true"
     >
@@ -32,7 +32,7 @@ function MoonIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="3"
       strokeLinecap="round"
       aria-hidden="true"
     >
