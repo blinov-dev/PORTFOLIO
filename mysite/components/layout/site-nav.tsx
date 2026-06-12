@@ -18,14 +18,12 @@ export function SiteNav({
   const listClass =
     orientation === "vertical"
       ? size === "large"
-        ? "flex flex-col gap-2"
-        : "flex flex-col gap-1"
-      : "flex flex-wrap items-center gap-1 sm:gap-2";
+        ? "flex flex-col gap-3"
+        : "flex flex-col gap-2"
+      : "flex flex-wrap items-center gap-1.5";
 
   const linkClass =
-    size === "large"
-      ? "block rounded-2xl px-4 py-3.5 text-lg font-medium text-foreground transition-colors hover:bg-primary/8 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-      : "rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-primary/8 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
+    size === "large" ? "nav-link nav-link--drawer" : "nav-link";
 
   return (
     <nav aria-label="Основная навигация" className={className}>

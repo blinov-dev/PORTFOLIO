@@ -28,6 +28,7 @@
 
   /* Liquid glass */
   --glass-bg: 32 35% 99% / 0.58;
+  --glass-header-bg: 32 35% 99% / 0.82;
   --glass-border: 32 20% 88% / 0.65;
   --glass-highlight: 0 0% 100% / 0.55;
   --glass-blur: 18px;

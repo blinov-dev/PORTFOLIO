@@ -16,6 +16,7 @@
     --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.25),
       0 8px 24px hsl(0 0% 0% / 0.2);
     --glass-bg: 240 7% 12% / 0.72;
+    --glass-header-bg: 240 7% 10% / 0.88;
     --glass-border: 240 6% 22% / 0.55;
     --glass-highlight: 0 0% 100% / 0.06;
     --glass-shadow: 0 4px 32px hsl(0 0% 0% / 0.35),
@@ -56,6 +57,7 @@
   --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.25),
     0 8px 24px hsl(0 0% 0% / 0.2);
   --glass-bg: 240 7% 12% / 0.72;
+  --glass-header-bg: 240 7% 10% / 0.88;
   --glass-border: 240 6% 22% / 0.55;
   --glass-highlight: 0 0% 100% / 0.06;
   --glass-shadow: 0 4px 32px hsl(0 0% 0% / 0.35),
@@ -95,6 +97,7 @@
   --shadow-card: 0 2px 8px hsl(265 30% 40% / 0.06),
     0 8px 24px hsl(265 30% 40% / 0.05);
   --glass-bg: 32 35% 99% / 0.58;
+  --glass-header-bg: 32 35% 99% / 0.82;
   --glass-border: 32 20% 88% / 0.65;
   --glass-highlight: 0 0% 100% / 0.55;
   --glass-shadow: 0 4px 24px hsl(265 40% 40% / 0.08),
