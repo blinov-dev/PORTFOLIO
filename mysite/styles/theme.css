@@ -1,0 +1,123 @@
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --background: 240 8% 6%;
+    --foreground: 32 15% 92%;
+    --card: 240 7% 10%;
+    --card-foreground: 32 15% 92%;
+    --muted: 240 6% 14%;
+    --muted-foreground: 240 5% 58%;
+    --primary: 265 58% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 340 48% 62%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 158 38% 52%;
+    --accent-foreground: 0 0% 100%;
+    --border: 240 6% 18%;
+    --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.25),
+      0 8px 24px hsl(0 0% 0% / 0.2);
+    --glass-bg: 240 7% 12% / 0.72;
+    --glass-border: 240 6% 22% / 0.55;
+    --glass-highlight: 0 0% 100% / 0.06;
+    --glass-shadow: 0 4px 32px hsl(0 0% 0% / 0.35),
+      inset 0 1px 0 hsl(var(--glass-highlight));
+    --gradient-ambient: radial-gradient(
+        ellipse 80% 50% at 15% 10%,
+        hsl(265 58% 62% / 0.12),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 45% at 85% 15%,
+        hsl(340 48% 62% / 0.08),
+        transparent 50%
+      );
+    --gradient-profile: linear-gradient(
+      145deg,
+      hsl(265 58% 62% / 0.2) 0%,
+      hsl(340 48% 62% / 0.12) 50%,
+      hsl(158 38% 52% / 0.06) 100%
+    );
+  }
+}
+
+[data-theme='dark'] {
+  --background: 240 8% 6%;
+  --foreground: 32 15% 92%;
+  --card: 240 7% 10%;
+  --card-foreground: 32 15% 92%;
+  --muted: 240 6% 14%;
+  --muted-foreground: 240 5% 58%;
+  --primary: 265 58% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 340 48% 62%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 158 38% 52%;
+  --accent-foreground: 0 0% 100%;
+  --border: 240 6% 18%;
+  --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.25),
+    0 8px 24px hsl(0 0% 0% / 0.2);
+  --glass-bg: 240 7% 12% / 0.72;
+  --glass-border: 240 6% 22% / 0.55;
+  --glass-highlight: 0 0% 100% / 0.06;
+  --glass-shadow: 0 4px 32px hsl(0 0% 0% / 0.35),
+    inset 0 1px 0 hsl(var(--glass-highlight));
+  --gradient-ambient: radial-gradient(
+      ellipse 80% 50% at 15% 10%,
+      hsl(265 58% 62% / 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 60% 45% at 85% 15%,
+      hsl(340 48% 62% / 0.08),
+      transparent 50%
+    );
+  --gradient-profile: linear-gradient(
+    145deg,
+    hsl(265 58% 62% / 0.2) 0%,
+    hsl(340 48% 62% / 0.12) 50%,
+    hsl(158 38% 52% / 0.06) 100%
+  );
+}
+
+[data-theme='light'] {
+  --background: 35 28% 97%;
+  --foreground: 240 6% 16%;
+  --card: 32 35% 99%;
+  --card-foreground: 240 6% 16%;
+  --muted: 32 16% 93%;
+  --muted-foreground: 240 4% 42%;
+  --primary: 265 62% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 340 52% 56%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 158 42% 45%;
+  --accent-foreground: 0 0% 100%;
+  --border: 32 14% 88%;
+  --shadow-card: 0 2px 8px hsl(265 30% 40% / 0.06),
+    0 8px 24px hsl(265 30% 40% / 0.05);
+  --glass-bg: 32 35% 99% / 0.58;
+  --glass-border: 32 20% 88% / 0.65;
+  --glass-highlight: 0 0% 100% / 0.55;
+  --glass-shadow: 0 4px 24px hsl(265 40% 40% / 0.08),
+    inset 0 1px 0 hsl(var(--glass-highlight));
+  --gradient-ambient: radial-gradient(
+      ellipse 80% 50% at 15% 10%,
+      hsl(265 62% 55% / 0.1),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 60% 45% at 85% 15%,
+      hsl(340 52% 56% / 0.08),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 70% 90%,
+      hsl(158 42% 45% / 0.06),
+      transparent 45%
+    );
+  --gradient-profile: linear-gradient(
+    145deg,
+    hsl(265 62% 55% / 0.18) 0%,
+    hsl(340 52% 56% / 0.12) 45%,
+    hsl(158 42% 45% / 0.08) 100%
+  );
+}
