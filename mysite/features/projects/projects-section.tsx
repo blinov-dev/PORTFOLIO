@@ -7,7 +7,7 @@ export function ProjectsSection() {
     <Section
       id="projects"
       title="Кейсы и проекты"
-      description="Примеры работ — детали и ссылки будут добавлены позже"
+      description="Направления, в которых работал на коммерческих проектах"
     >
       <div className="grid auto-rows-fr gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         {projects.map((project, index) => (

@@ -8,26 +8,26 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
   {
-    title: "E-commerce витрина",
+    title: "CRM/ITSM система",
     description:
-      "Интернет-магазин с каталогом, фильтрами и адаптивной вёрсткой.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+      "Модульная система для заявок, ремонтов, статусов, дедлайнов и ролей пользователей.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Tailwind"],
     href: "#",
     image: "/images/project-placeholder.svg",
   },
   {
-    title: "Личный кабинет",
+    title: "B2B-интерфейсы и интеграции",
     description:
-      "SPA для управления заказами и профилем пользователя с интеграцией REST API.",
-    tags: ["React", "TypeScript", "REST API"],
+      "Интерфейсы для заказов, контрагентов, статусов обмена и связки сайта с учётной системой.",
+    tags: ["Next.js", "React", "REST API"],
     href: "#",
     image: "/images/project-placeholder.svg",
   },
   {
-    title: "Корпоративный landing",
+    title: "Административные интерфейсы",
     description:
-      "Промо-сайт компании с анимациями, формой обратной связи и SEO-оптимизацией.",
-    tags: ["Next.js", "Tailwind CSS", "SEO"],
+      "Таблицы, фильтры, карточки сущностей, модальные окна, права доступа и рабочие процессы.",
+    tags: ["React", "TypeScript", "Tailwind"],
     href: "#",
     image: "/images/project-placeholder.svg",
   },

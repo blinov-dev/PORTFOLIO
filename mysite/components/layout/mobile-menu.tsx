@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
-import { contacts } from "@/lib/content/contacts";
+import { contacts, getPrimaryContactHref } from "@/lib/content/contacts";
 import type { NavItem } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
 import { SiteNav } from "./site-nav";
@@ -96,23 +96,31 @@ export function MobileMenu({ items }: MobileMenuProps) {
               </div>
 
               <div className="mt-auto space-y-4 border-t border-border/50 px-5 py-5">
-                <Button href="#contacts" className="w-full" onClick={close}>
+                <Button
+                  href={getPrimaryContactHref()}
+                  className="w-full"
+                  onClick={close}
+                >
                   Написать
                 </Button>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                  {contacts.slice(0, 2).map((contact) => (
-                    <a
-                      key={contact.label}
-                      href={contact.href}
-                      onClick={close}
-                      className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                      {...(contact.href.startsWith("http")
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                    >
-                      {contact.value}
-                    </a>
-                  ))}
+                <div className="flex flex-col gap-1 text-xs text-muted-foreground">
+                  {contacts.slice(0, 2).map((contact) =>
+                    contact.href ? (
+                      <a
+                        key={contact.label}
+                        href={contact.href}
+                        onClick={close}
+                        className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        {...(contact.href.startsWith("http")
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {contact.value}
+                      </a>
+                    ) : (
+                      <span key={contact.label}>{contact.value}</span>
+                    ),
+                  )}
                 </div>
               </div>
             </aside>

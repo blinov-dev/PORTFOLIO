@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: `${siteConfig.name} — ${siteConfig.role}`,
   description: siteConfig.pitch,
   openGraph: {
@@ -21,7 +22,15 @@ export const metadata: Metadata = {
     description: siteConfig.pitch,
     type: "website",
     locale: "ru_RU",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     images: [{ url: siteConfig.ogImage }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.role}`,
+    description: siteConfig.pitch,
+    images: [siteConfig.ogImage],
   },
 };
 
@@ -33,7 +42,9 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
+      data-theme="light"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      style={{ colorScheme: "light" }}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         {children}

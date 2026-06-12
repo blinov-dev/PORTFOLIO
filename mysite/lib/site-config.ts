@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "Александр Блинов",
   role: "Frontend-разработчик",
   pitch:
-    "Создаю современные, быстрые и удобные интерфейсы на Next.js, React и TypeScript.",
+    "Разрабатываю быстрые и аккуратные интерфейсы на Next.js, React и TypeScript: от лендингов и личных кабинетов до CRM, админок и B2B-систем.",
   experience: "3+",
-  url: "https://example.com",
+  url: "https://portfolio-black-eight-gklwvfrewp.vercel.app",
   ogImage: "/images/profile-placeholder.svg",
 } as const;
 
