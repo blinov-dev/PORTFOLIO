@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { contacts } from "@/lib/content/contacts";
 import type { NavItem } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { SiteNav } from "./site-nav";
 
 type MobileMenuProps = {
@@ -61,14 +62,16 @@ export function MobileMenu({ items }: MobileMenuProps) {
               aria-label="Мобильное меню"
               className="drawer-panel glass-surface fixed right-0 top-0 z-[101] flex h-dvh w-[min(92vw,22rem)] flex-col border-l border-border/60 shadow-2xl"
             >
-              <div className="flex items-center justify-between border-b border-border/50 px-5 py-4">
+              <div className="flex items-center justify-between gap-3 border-b border-border/50 px-5 py-4">
                 <span className="text-sm font-semibold">Меню</span>
-                <button
-                  type="button"
-                  aria-label="Закрыть меню"
-                  onClick={close}
-                  className="inline-flex size-10 items-center justify-center rounded-full border border-border/60 bg-muted/50 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                >
+                <div className="flex items-center gap-2">
+                  <ThemeToggle />
+                  <button
+                    type="button"
+                    aria-label="Закрыть меню"
+                    onClick={close}
+                    className="inline-flex size-10 items-center justify-center rounded-full border border-border/60 bg-muted/50 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
                   <svg
                     width="20"
                     height="20"
@@ -84,6 +87,7 @@ export function MobileMenu({ items }: MobileMenuProps) {
                     />
                   </svg>
                 </button>
+                </div>
               </div>
 
               <div className="flex-1 overflow-y-auto px-4 py-6">
