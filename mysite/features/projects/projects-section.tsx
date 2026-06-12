@@ -7,9 +7,10 @@ export function ProjectsSection() {
     <Section
       id="projects"
       title="Кейсы и проекты"
-      description="Направления, в которых работал на коммерческих проектах"
+      description="Направления, в которых уже делал коммерческие интерфейсы"
+      className="border-y border-border/50 bg-muted/20"
     >
-      <div className="grid auto-rows-fr gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+      <div className="grid auto-rows-fr gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         {projects.map((project, index) => (
           <div
             key={project.title}

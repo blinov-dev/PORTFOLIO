@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import type { ProjectItem } from "@/lib/content/projects";
+import { ProjectMockup } from "./project-mockup";
 
 type ProjectCardProps = {
   project: ProjectItem;
@@ -9,25 +9,18 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, featured = false }: ProjectCardProps) {
+  const hasLink = project.href !== "#" && project.href.startsWith("http");
+
   return (
     <Card hover className="flex h-full flex-col gap-0 overflow-hidden p-0">
-      <div
-        className={`relative w-full bg-muted ${featured ? "aspect-[2/1]" : "aspect-video"}`}
-      >
-        <Image
-          src={project.image}
-          alt=""
-          fill
-          className="object-cover"
-          sizes={
-            featured
-              ? "(max-width: 768px) 100vw, 66vw"
-              : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          }
-        />
-      </div>
-      <div className="flex flex-1 flex-col gap-3 p-6">
-        <h3 className="text-lg font-medium">{project.title}</h3>
+      <ProjectMockup type={project.mockup} featured={featured} />
+      <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
+        <div>
+          <h3 className="text-lg font-semibold">{project.title}</h3>
+          <p className="mt-1 text-xs font-medium text-primary">
+            {project.outcome}
+          </p>
+        </div>
         <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>
@@ -38,15 +31,18 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             </Badge>
           ))}
         </div>
-        <a
-          href={project.href}
-          className="text-sm font-medium text-primary transition-colors hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          {...(project.href.startsWith("http")
-            ? { target: "_blank", rel: "noopener noreferrer" }
-            : {})}
-        >
-          Подробнее →
-        </a>
+        {hasLink ? (
+          <a
+            href={project.href}
+            className="text-sm font-medium text-primary transition-colors hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Подробнее →
+          </a>
+        ) : (
+          <p className="text-xs text-muted-foreground">Кейс из коммерческой практики</p>
+        )}
       </div>
     </Card>
   );

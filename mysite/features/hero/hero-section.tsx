@@ -8,57 +8,68 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="scroll-mt-24 py-10 sm:py-14 lg:py-20"
+      className="scroll-mt-24 overflow-hidden py-10 sm:py-14 lg:py-20"
       aria-labelledby="hero-title"
     >
       <Container>
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-          <ProfileImage />
-
-          <div className="flex flex-col gap-6">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+          <div className="order-2 flex flex-col gap-6 lg:order-1">
             <div className="space-y-4">
-              <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-                <span className="gradient-text">{siteConfig.role}</span>
-              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                  {siteConfig.role}
+                </span>
+                <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+                  {siteConfig.experience} года · Available
+                </span>
+              </div>
+
               <h1
                 id="hero-title"
-                className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-[3.25rem] lg:leading-tight"
+                className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]"
               >
-                {siteConfig.name}
+                {siteConfig.tagline}
               </h1>
+
+              <p className="text-xl font-semibold tracking-tight sm:text-2xl">
+                {siteConfig.name}
+              </p>
+
               <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {siteConfig.pitch}
               </p>
             </div>
 
-            <ul className="space-y-2.5 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2.5">
-                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.5)]" />
-                {siteConfig.experience} года коммерческого опыта
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-secondary shadow-[0_0_6px_hsl(var(--secondary)/0.4)]" />
-                Next.js, React, TypeScript
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_6px_hsl(var(--accent)/0.4)]" />
-                Адаптивная вёрстка и чистый UI
-              </li>
-            </ul>
+            <div className="flex flex-wrap gap-2">
+              {["CRM", "B2B", "Admin UI", "Next.js", "React", "TypeScript"].map(
+                (tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-border/70 bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ),
+              )}
+            </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button href="#contacts">Связаться</Button>
+              <Button href="#contacts">Обсудить проект</Button>
               <Button href="#projects" variant="secondary">
                 Смотреть кейсы
               </Button>
             </div>
 
-            <div>
+            <div className="border-t border-border/60 pt-5">
               <p className="mb-3 text-sm text-muted-foreground">
-                Напишите — обсудим задачу и сроки
+                Telegram или email — отвечу с оценкой формата и сроков
               </p>
               <SocialLinks />
             </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <ProfileImage />
           </div>
         </div>
       </Container>

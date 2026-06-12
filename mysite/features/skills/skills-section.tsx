@@ -7,20 +7,34 @@ export function SkillsSection() {
   return (
     <Section
       id="skills"
-      title="Стек технологий"
-      description="Инструменты и технологии, с которыми работаю"
+      title="Стек и инструменты"
+      description="Технологии под задачу — без бесконечного списка ради списка"
     >
-      <div className="grid gap-4 sm:grid-cols-2">
-        {skillGroups.map((group, index) => (
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+        {skillGroups.map((group) => (
           <Card
             key={group.title}
             hover
-            className={index === 0 ? "sm:row-span-2" : ""}
+            className={
+              group.featured
+                ? "border-primary/25 bg-gradient-to-br from-primary/[0.06] to-secondary/[0.04] sm:col-span-2 lg:col-span-7 lg:row-span-2"
+                : "lg:col-span-5"
+            }
           >
-            <h3 className="mb-4 text-lg font-medium">{group.title}</h3>
+            <h3
+              className={`mb-4 font-medium ${
+                group.featured ? "text-xl" : "text-lg"
+              }`}
+            >
+              {group.title}
+            </h3>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
-                <Badge key={item} variant="glass">
+                <Badge
+                  key={item}
+                  variant={group.featured ? "gradient" : "glass"}
+                  className={group.featured ? "px-4 py-1.5 text-sm" : ""}
+                >
                   {item}
                 </Badge>
               ))}

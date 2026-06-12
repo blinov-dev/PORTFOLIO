@@ -1,23 +1,25 @@
 export type SkillGroup = {
   title: string;
   items: string[];
+  featured?: boolean;
 };
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "HTML", "CSS"],
+    title: "Основной стек",
+    items: ["Next.js", "React", "TypeScript", "HTML", "CSS"],
+    featured: true,
   },
   {
-    title: "Styling",
-    items: ["Tailwind CSS", "CSS Modules", "Responsive design"],
+    title: "UI и стили",
+    items: ["Tailwind CSS", "CSS Modules", "Responsive design", "Figma"],
   },
   {
-    title: "Tooling",
-    items: ["Git", "ESLint", "npm", "Vite"],
+    title: "Работа с данными",
+    items: ["REST API", "Fetch patterns", "Forms & validation", "Client/Server Components"],
   },
   {
-    title: "Другое",
-    items: ["REST API", "Figma", "Code review"],
+    title: "Качество и инструменты",
+    items: ["Git", "ESLint", "TypeScript strict", "Code review"],
   },
 ];

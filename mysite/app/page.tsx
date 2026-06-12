@@ -7,6 +7,7 @@ import { ProjectsSection } from "@/features/projects/projects-section";
 import { ServicesSection } from "@/features/services/services-section";
 import { SkillsSection } from "@/features/skills/skills-section";
 import { StatsSection } from "@/features/stats/stats-section";
+import { WorkProcessSection } from "@/features/work-process/work-process-section";
 
 export default function Home() {
   return (
@@ -14,9 +15,10 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
         <StatsSection />
+        <AboutSection />
         <ServicesSection />
+        <WorkProcessSection />
         <SkillsSection />
         <ProjectsSection />
         <ContactsSection />
