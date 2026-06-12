@@ -32,21 +32,11 @@ type SocialLinksProps = {
 export function SocialLinks({ className = "" }: SocialLinksProps) {
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
-      {socialLinks.map((link) =>
-        link.isPlaceholder ? (
-          <span
-            key={link.label}
-            aria-label={`${link.label} — скоро будет добавлен`}
-            className="glass-surface inline-flex size-10 cursor-not-allowed items-center justify-center rounded-full text-muted-foreground opacity-50"
-          >
-            <SocialIcon icon={link.icon} />
-          </span>
-        ) : (
-          <IconButton key={link.label} href={link.href} label={link.label}>
-            <SocialIcon icon={link.icon} />
-          </IconButton>
-        ),
-      )}
+      {socialLinks.map((link) => (
+        <IconButton key={link.label} href={link.href} label={link.label}>
+          <SocialIcon icon={link.icon} />
+        </IconButton>
+      ))}
     </div>
   );
 }

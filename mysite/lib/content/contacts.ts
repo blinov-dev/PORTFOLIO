@@ -1,17 +1,16 @@
 /**
  * Контакты — единый источник правды.
- * Перед публикацией замените placeholder-значения email и telegram ниже.
  */
 export const contactConfig = {
   email: {
     label: "Email",
-    display: "email@example.com — заменить на реальный email",
-    href: null as string | null,
+    display: "blinovav.dev@gmail.com",
+    href: "mailto:blinovav.dev@gmail.com",
   },
   telegram: {
     label: "Telegram",
-    display: "@telegram — заменить на реальный Telegram",
-    href: null as string | null,
+    display: "@BlinovDev",
+    href: "https://t.me/BlinovDev",
   },
   github: {
     label: "GitHub",
@@ -39,13 +38,11 @@ export const contacts: ContactItem[] = [
     label: contactConfig.email.label,
     value: contactConfig.email.display,
     href: contactConfig.email.href,
-    isPlaceholder: true,
   },
   {
     label: contactConfig.telegram.label,
     value: contactConfig.telegram.display,
     href: contactConfig.telegram.href,
-    isPlaceholder: true,
   },
   {
     label: contactConfig.github.label,
@@ -57,9 +54,8 @@ export const contacts: ContactItem[] = [
 export const socialLinks: SocialItem[] = [
   {
     label: "Telegram",
-    href: contactConfig.telegram.href ?? "#",
+    href: contactConfig.telegram.href,
     icon: "telegram",
-    isPlaceholder: !contactConfig.telegram.href,
   },
   {
     label: "GitHub",
@@ -68,15 +64,13 @@ export const socialLinks: SocialItem[] = [
   },
   {
     label: "Email",
-    href: contactConfig.email.href ?? "#",
+    href: contactConfig.email.href,
     icon: "email",
-    isPlaceholder: !contactConfig.email.href,
   },
 ];
 
-/** CTA href для кнопок «Написать» — fallback на секцию контактов, пока email не задан */
 export function getPrimaryContactHref(): string {
-  return contactConfig.email.href ?? contactConfig.telegram.href ?? "#contacts";
+  return contactConfig.telegram.href;
 }
 
 export const contactCtaText =
