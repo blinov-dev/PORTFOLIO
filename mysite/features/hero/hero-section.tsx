@@ -8,63 +8,59 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="scroll-mt-24 overflow-hidden py-10 sm:py-14 lg:py-20"
+      className="hero-section scroll-mt-24 overflow-hidden py-10 sm:py-12 lg:py-16"
       aria-labelledby="hero-title"
     >
       <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-          <div className="order-2 flex flex-col gap-6 lg:order-1">
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                  {siteConfig.role}
+        <div className="grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+          <div className="order-2 flex flex-col gap-5 lg:order-1 lg:gap-6">
+            <div className="hero-copy space-y-3 sm:space-y-4">
+              <p className="hero-eyebrow text-sm font-medium text-muted-foreground">
+                <span className="text-foreground">{siteConfig.role}</span>
+                <span aria-hidden="true" className="mx-2 text-border">
+                  ·
                 </span>
-                <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                  {siteConfig.experience} года опыта
-                </span>
-              </div>
+                <span>{siteConfig.stack}</span>
+              </p>
 
               <h1
                 id="hero-title"
-                className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]"
+                className="hero-name text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.25rem]"
               >
-                {siteConfig.tagline}
+                {siteConfig.name}
               </h1>
 
-              <p className="text-xl font-semibold tracking-tight sm:text-2xl">
-                {siteConfig.name}
-              </p>
-
-              <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p className="max-w-xl text-base leading-relaxed text-foreground/90 sm:text-lg">
                 {siteConfig.pitch}
               </p>
 
-              <p className="max-w-xl text-sm font-medium text-foreground/90 sm:text-base">
-                {siteConfig.availability}
+              <p className="hero-availability flex max-w-xl items-start gap-2 text-sm font-medium text-foreground sm:text-base">
+                <span
+                  className="mt-2 size-2 shrink-0 rounded-full bg-accent shadow-[0_0_8px_hsl(var(--accent)/0.45)]"
+                  aria-hidden="true"
+                />
+                <span>{siteConfig.availability}</span>
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" aria-label="Ключевой стек">
               {siteConfig.heroChips.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border/70 bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
-                >
+                <span key={tag} className="hero-chip">
                   {tag}
                 </span>
               ))}
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button href="#contacts">Обсудить проект</Button>
+              <Button href="#contacts">Связаться</Button>
               <Button href="#projects" variant="secondary">
-                Смотреть кейсы
+                Смотреть проекты
               </Button>
             </div>
 
-            <div className="border-t border-border/60 pt-5">
+            <div className="border-t border-border/60 pt-4">
               <p className="mb-3 text-sm text-muted-foreground">
-                Telegram или email — отвечу с оценкой формата и сроков
+                Telegram или email
               </p>
               <SocialLinks />
             </div>
