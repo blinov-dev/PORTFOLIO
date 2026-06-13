@@ -38,10 +38,6 @@ export function WorkProcessSection() {
                   <span className="process-step__badge">{step.step}</span>
                   <h3 className="process-step__title">{step.title}</h3>
                   <p className="process-step__text">{step.description}</p>
-                  <p className="process-step__output">
-                    <span className="process-step__output-label">На выходе:</span>{" "}
-                    {step.output}
-                  </p>
                 </article>
               </li>
             );

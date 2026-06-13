@@ -21,10 +21,6 @@ function TaskDetails({ task }: { task: ServiceTask }) {
           ))}
         </ul>
       </div>
-      <p className="services-details__output">
-        <span className="services-details__output-label">На выходе:</span>{" "}
-        {task.output}
-      </p>
     </article>
   );
 }

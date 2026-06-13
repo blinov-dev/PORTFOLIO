@@ -3,7 +3,6 @@ export type ServiceTask = {
   title: string;
   description: string;
   capabilities: string[];
-  output: string;
 };
 
 export const servicesSectionDescription =
@@ -21,7 +20,6 @@ export const serviceTasks: ServiceTask[] = [
       "форма заявки или контакты",
       "базовая SEO-подготовка",
     ],
-    output: "Страница, которую можно показывать клиентам и использовать для заявок.",
   },
   {
     id: "ecommerce",
@@ -34,7 +32,6 @@ export const serviceTasks: ServiceTask[] = [
       "корзина и оформление заказа",
       "состояния загрузки и ошибок",
     ],
-    output: "Понятный путь пользователя от выбора товара до заявки или покупки.",
   },
   {
     id: "spa",
@@ -47,7 +44,6 @@ export const serviceTasks: ServiceTask[] = [
       "пользовательские сценарии",
       "loading / empty / error states",
     ],
-    output: "Интерфейс, в котором пользователю понятно, что делать дальше.",
   },
   {
     id: "admin",
@@ -60,7 +56,6 @@ export const serviceTasks: ServiceTask[] = [
       "статусы и действия",
       "адаптив для рабочих сценариев",
     ],
-    output: "Инструмент для ежедневной работы без лишнего хаоса.",
   },
   {
     id: "api",
@@ -73,7 +68,6 @@ export const serviceTasks: ServiceTask[] = [
       "кеширование",
       "формы, валидация и состояния",
     ],
-    output: "Frontend, который не разваливается при ошибках API и понятен пользователю.",
   },
   {
     id: "refactor",
@@ -86,6 +80,5 @@ export const serviceTasks: ServiceTask[] = [
       "исправить баги",
       "аккуратно добавить новые фичи",
     ],
-    output: "Проект, который проще поддерживать и развивать дальше.",
   },
 ];
