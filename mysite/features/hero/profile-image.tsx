@@ -1,43 +1,80 @@
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/lib/site-config";
 
 const capabilityBlocks = [
   {
-    title: "React / Next.js",
-    hint: "SPA и SSR",
-    tone: "primary" as const,
-  },
-  {
-    title: "Интеграция API",
+    title: "API-интеграции",
     hint: "REST, кеш, ошибки",
-    tone: "secondary" as const,
+    tone: "primary" as const,
   },
   {
     title: "Формы и состояния",
     hint: "RHF, RTK Query",
-    tone: "accent" as const,
+    tone: "secondary" as const,
   },
   {
-    title: "Поддержка UI",
-    hint: "адаптив, рефакторинг",
-    tone: "primary" as const,
+    title: "Адаптивный UI",
+    hint: "mobile-first, темы",
+    tone: "accent" as const,
   },
 ];
 
-const focusAreas = [
-  "Интернет-магазины",
-  "SPA и кабинеты",
-  "Админки",
-  "B2B и лендинги",
+const floatingBadges = [
+  {
+    label: "3+ года",
+    variant: "gradient" as const,
+    className: "hero-badge hero-badge--exp -top-2 left-3 sm:left-5",
+  },
+  {
+    label: "React",
+    variant: "glass" as const,
+    className: "hero-badge hero-badge--react top-10 -right-1 sm:right-3",
+  },
+  {
+    label: "Next.js",
+    variant: "glass" as const,
+    className:
+      "hero-badge hero-badge--next top-[38%] -left-2 sm:left-2 max-sm:hidden",
+  },
+  {
+    label: "TypeScript",
+    variant: "glass" as const,
+    className:
+      "hero-badge hero-badge--ts top-[48%] -right-2 sm:right-1 max-md:hidden",
+  },
+  {
+    label: "RTK Query",
+    variant: "glass" as const,
+    className:
+      "hero-badge hero-badge--rtk bottom-24 left-2 sm:left-4 max-lg:hidden",
+  },
+  {
+    label: "Открыт к проектам",
+    variant: "accent" as const,
+    className: "hero-badge hero-badge--open -bottom-2 right-4 sm:right-6",
+  },
 ];
 
 export function ProfileImage() {
-  const initials = siteConfig.name
-    .split(" ")
-    .map((part) => part[0])
-    .join("");
-
   return (
-    <div className="hero-visual relative mx-auto w-full max-w-md lg:max-w-none">
+    <div className="hero-visual relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-none">
+      {floatingBadges.map((badge) => (
+        <Badge
+          key={badge.label}
+          variant={badge.variant}
+          className={`hero-floating-badge absolute z-20 shadow-md ${badge.className}`}
+        >
+          {badge.variant === "accent" && (
+            <span
+              className="size-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_6px_hsl(var(--accent)/0.6)]"
+              aria-hidden="true"
+            />
+          )}
+          {badge.label}
+        </Badge>
+      ))}
+
       <div
         className="glass-surface hero-visual-panel relative overflow-hidden rounded-[1.75rem] p-4 sm:rounded-[2rem] sm:p-5"
         style={{ backgroundImage: "var(--gradient-profile)" }}
@@ -51,65 +88,60 @@ export function ProfileImage() {
           aria-hidden="true"
         />
 
-        <div className="relative grid gap-3 sm:grid-cols-[0.95fr_1.05fr] sm:gap-4">
-          <div className="hero-portrait-slot glass-surface flex flex-col items-center justify-center rounded-2xl border border-primary/15 p-4 sm:min-h-[220px] sm:p-5">
-            <div
-              className="hero-portrait-frame relative mb-3 flex aspect-[4/5] w-full max-w-[9.5rem] items-center justify-center rounded-2xl bg-gradient-to-br from-primary/18 via-secondary/10 to-accent/8 ring-1 ring-primary/25 sm:max-w-[10.5rem]"
-              aria-hidden="true"
-            >
-              <span className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-                {initials}
-              </span>
+        <div className="relative grid items-center gap-4 sm:grid-cols-[1.05fr_0.95fr] sm:gap-5">
+          <div className="hero-photo-column mx-auto w-full max-w-[15.5rem] sm:max-w-none">
+            <div className="hero-photo-shell rounded-[1.35rem] p-1.5 sm:rounded-[1.5rem] sm:p-2">
+              <div className="hero-portrait-frame relative aspect-[4/5] overflow-hidden rounded-[1.15rem] sm:rounded-[1.25rem]">
+                <Image
+                  src={siteConfig.profileImage}
+                  alt="Александр Блинов — frontend-разработчик"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 220px, (max-width: 1024px) 260px, 300px"
+                  className="object-cover"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/20"
+                  aria-hidden="true"
+                />
+              </div>
             </div>
-            <p className="text-center text-sm font-semibold">{siteConfig.name}</p>
-            <p className="text-center text-xs text-muted-foreground">
-              {siteConfig.experience} года · {siteConfig.stack}
+            <p className="mt-3 text-center text-sm font-semibold sm:hidden">
+              {siteConfig.name}
             </p>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2.5 sm:gap-3">
             <div className="glass-surface rounded-xl px-3 py-2.5">
               <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                 Направления
               </p>
               <p className="mt-1 text-xs leading-relaxed text-foreground/85">
-                {focusAreas.join(" · ")}
+                Интернет-магазины · SPA · админки · B2B · лендинги
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              {capabilityBlocks.map((block) => (
-                <div
-                  key={block.title}
-                  className="hero-capability glass-surface rounded-xl px-2.5 py-2.5"
+            {capabilityBlocks.map((block) => (
+              <div
+                key={block.title}
+                className="hero-capability glass-surface rounded-xl px-3 py-2.5"
+              >
+                <p
+                  className={`text-xs font-semibold leading-tight ${
+                    block.tone === "primary"
+                      ? "text-primary"
+                      : block.tone === "secondary"
+                        ? "text-secondary"
+                        : "text-accent"
+                  }`}
                 >
-                  <p
-                    className={`text-xs font-semibold leading-tight ${
-                      block.tone === "primary"
-                        ? "text-primary"
-                        : block.tone === "secondary"
-                          ? "text-secondary"
-                          : "text-accent"
-                    }`}
-                  >
-                    {block.title}
-                  </p>
-                  <p className="mt-1 text-[10px] leading-tight text-muted-foreground">
-                    {block.hint}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="glass-surface rounded-xl px-3 py-2.5">
-              <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                Качество интерфейса
-              </p>
-              <p className="mt-1 text-xs leading-relaxed text-foreground/85">
-                Компоненты, адаптив, темы и поддерживаемая структура — как на
-                этом сайте.
-              </p>
-            </div>
+                  {block.title}
+                </p>
+                <p className="mt-1 text-[10px] leading-tight text-muted-foreground">
+                  {block.hint}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
