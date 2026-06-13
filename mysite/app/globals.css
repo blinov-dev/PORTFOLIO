@@ -800,12 +800,14 @@ body {
 }
 
 .skill-tilt-tile:hover .skill-tilt-tile__surface,
-.skill-tilt-tile:focus-within .skill-tilt-tile__surface {
-  border-color: hsl(var(--primary) / 0.3);
-  background: hsl(var(--primary) / 0.06);
+.skill-tilt-tile:focus-within .skill-tilt-tile__surface,
+.skill-tilt-tile--hovered .skill-tilt-tile__surface {
+  border-color: hsl(var(--primary) / 0.38);
+  background: hsl(var(--primary) / 0.08);
   box-shadow:
     var(--glass-shadow),
-    0 12px 32px hsl(var(--primary) / 0.14),
+    0 18px 42px hsl(var(--primary) / 0.18),
+    0 0 28px color-mix(in srgb, var(--skill-brand, hsl(var(--primary))) 22%, transparent),
     inset 0 1px 0 hsl(var(--glass-highlight));
 }
 
@@ -833,7 +835,8 @@ body {
 }
 
 .skill-tilt-tile:hover .skill-tilt-tile__svg,
-.skill-tilt-tile:focus-within .skill-tilt-tile__svg {
+.skill-tilt-tile:focus-within .skill-tilt-tile__svg,
+.skill-tilt-tile--hovered .skill-tilt-tile__svg {
   color: var(--skill-brand, hsl(var(--primary)));
 }
 
@@ -858,6 +861,7 @@ body {
 }
 
 .skill-tilt-tile:hover .skill-tilt-tile__label,
-.skill-tilt-tile:focus-within .skill-tilt-tile__label {
-  color: hsl(var(--foreground) / 0.92);
+.skill-tilt-tile:focus-within .skill-tilt-tile__label,
+.skill-tilt-tile--hovered .skill-tilt-tile__label {
+  color: hsl(var(--foreground));
 }

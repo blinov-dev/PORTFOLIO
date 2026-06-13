@@ -13,14 +13,16 @@ export type SkillIconId =
 
 export type SkillTileSize = "lg" | "md" | "sm";
 
+export type SkillFloatPattern = "a" | "b" | "c" | "d";
+
 export type SkillVisualTile = {
   id: string;
   label: string;
   icon: SkillIconId;
   brandColor: string;
   size: SkillTileSize;
-  idleFloat?: boolean;
-  idleDelay?: number;
+  floatPattern: SkillFloatPattern;
+  floatDelay?: number;
 };
 
 export const skillsSectionDescription =
@@ -33,8 +35,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "react",
     brandColor: "#61DAFB",
     size: "lg",
-    idleFloat: true,
-    idleDelay: 0,
+    floatPattern: "a",
+    floatDelay: 0,
   },
   {
     id: "nextjs",
@@ -42,8 +44,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "nextjs",
     brandColor: "hsl(var(--foreground))",
     size: "lg",
-    idleFloat: true,
-    idleDelay: 0.4,
+    floatPattern: "b",
+    floatDelay: 0.45,
   },
   {
     id: "typescript",
@@ -51,8 +53,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "typescript",
     brandColor: "#3178C6",
     size: "lg",
-    idleFloat: true,
-    idleDelay: 0.8,
+    floatPattern: "c",
+    floatDelay: 0.9,
   },
   {
     id: "javascript",
@@ -60,8 +62,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "javascript",
     brandColor: "#F7DF1E",
     size: "lg",
-    idleFloat: true,
-    idleDelay: 0.2,
+    floatPattern: "a",
+    floatDelay: 0.25,
   },
   {
     id: "html",
@@ -69,6 +71,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "html",
     brandColor: "#E34F26",
     size: "md",
+    floatPattern: "d",
+    floatDelay: 0.1,
   },
   {
     id: "css",
@@ -76,6 +80,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "css",
     brandColor: "#1572B6",
     size: "md",
+    floatPattern: "b",
+    floatDelay: 0.55,
   },
   {
     id: "cssmodules",
@@ -83,6 +89,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "cssmodules",
     brandColor: "#4B70F5",
     size: "md",
+    floatPattern: "c",
+    floatDelay: 1.1,
   },
   {
     id: "tailwind",
@@ -90,6 +98,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "tailwind",
     brandColor: "#38BDF8",
     size: "md",
+    floatPattern: "b",
+    floatDelay: 0.35,
   },
   {
     id: "rtkquery",
@@ -97,6 +107,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "rtkquery",
     brandColor: "#764ABC",
     size: "md",
+    floatPattern: "c",
+    floatDelay: 0.7,
   },
   {
     id: "api",
@@ -104,6 +116,8 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "api",
     brandColor: "#10B981",
     size: "md",
+    floatPattern: "d",
+    floatDelay: 0.15,
   },
   {
     id: "git",
@@ -111,5 +125,7 @@ export const visualSkills: SkillVisualTile[] = [
     icon: "git",
     brandColor: "#F05032",
     size: "sm",
+    floatPattern: "b",
+    floatDelay: 0.85,
   },
 ];

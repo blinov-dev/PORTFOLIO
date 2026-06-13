@@ -38,8 +38,8 @@ export function SkillsSection() {
                 <SkillIcon id={skill.icon} className="skill-tilt-tile__svg" />
               }
               size={skill.size}
-              idleFloat={skill.idleFloat}
-              idleDelay={skill.idleDelay}
+              floatPattern={skill.floatPattern}
+              floatDelay={skill.floatDelay}
             />
           ))}
         </div>
