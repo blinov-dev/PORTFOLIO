@@ -1810,9 +1810,25 @@ body {
   gap: 0.85rem;
 }
 
-.contacts-form__field {
+.contact-field {
+  position: relative;
   display: grid;
   gap: 0.4rem;
+  padding-bottom: 1.05rem;
+}
+
+.contact-field--consent {
+  padding-bottom: 1.35rem;
+}
+
+.contact-field__error {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: hsl(var(--secondary));
 }
 
 .contacts-label {
@@ -1861,12 +1877,6 @@ body {
   resize: none;
 }
 
-.contacts-error {
-  font-size: 0.75rem;
-  line-height: 1.35;
-  color: hsl(var(--secondary));
-}
-
 .contacts-consent {
   display: flex;
   align-items: flex-start;
@@ -1878,7 +1888,6 @@ body {
 }
 
 .contacts-consent__input {
-  margin-top: 0.2rem;
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;

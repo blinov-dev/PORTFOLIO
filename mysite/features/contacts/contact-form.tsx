@@ -16,8 +16,6 @@ type FieldKey = "name" | "email" | "message" | "consent";
 
 type FieldErrors = Partial<Record<FieldKey, string>>;
 
-type TouchedFields = Partial<Record<FieldKey, boolean>>;
-
 const initialFields: FormFields = {
   name: "",
   email: "",
@@ -71,8 +69,7 @@ function fieldClassName(hasError: boolean) {
 export function ContactForm() {
   const [fields, setFields] = useState<FormFields>(initialFields);
   const [errors, setErrors] = useState<FieldErrors>({});
-  const [touched, setTouched] = useState<TouchedFields>({});
-  const [submittedAttempt, setSubmittedAttempt] = useState(false);
+  const [hasSubmitAttempted, setHasSubmitAttempted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -88,31 +85,32 @@ export function ContactForm() {
     );
   }, [fields]);
 
-  const showError = (field: FieldKey) =>
-    submittedAttempt || Boolean(touched[field]);
+  const showFieldError = (field: FieldKey) =>
+    hasSubmitAttempted && Boolean(errors[field]);
 
   const updateField = <K extends keyof FormFields>(
     key: K,
     value: FormFields[K],
   ) => {
-    setFields((prev) => ({ ...prev, [key]: value }));
-    setErrors((prev) => ({ ...prev, [key]: undefined }));
+    setFields((prev) => {
+      const next = { ...prev, [key]: value };
+      if (hasSubmitAttempted) {
+        setErrors(validate(next));
+      }
+      return next;
+    });
     setSubmitError("");
     setSuccess(false);
   };
 
-  const handleBlur = (field: FieldKey) => {
-    setTouched((prev) => ({ ...prev, [field]: true }));
-    setErrors(validate(fields));
-  };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmittedAttempt(true);
+    setHasSubmitAttempted(true);
 
     const nextErrors = validate(fields);
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
+      setSubmitError("");
       return;
     }
 
@@ -149,8 +147,7 @@ export function ContactForm() {
 
       setFields(initialFields);
       setErrors({});
-      setTouched({});
-      setSubmittedAttempt(false);
+      setHasSubmitAttempted(false);
       setSuccess(true);
     } catch {
       setSubmitError(contactFormUnavailableMessage);
@@ -183,7 +180,7 @@ export function ContactForm() {
         </div>
 
         <div className="contacts-form__grid">
-          <div className="contacts-form__field">
+          <div className="contact-field">
             <label htmlFor="contact-name" className={labelClassName}>
               Имя <span className="contacts-required">*</span>
             </label>
@@ -194,21 +191,20 @@ export function ContactForm() {
               autoComplete="name"
               value={fields.name}
               onChange={(e) => updateField("name", e.target.value)}
-              onBlur={() => handleBlur("name")}
-              className={fieldClassName(Boolean(showError("name") && errors.name))}
-              aria-invalid={Boolean(showError("name") && errors.name)}
+              className={fieldClassName(showFieldError("name"))}
+              aria-invalid={showFieldError("name")}
               aria-describedby={
-                showError("name") && errors.name ? "contact-name-error" : undefined
+                showFieldError("name") ? "contact-name-error" : undefined
               }
             />
-            {showError("name") && errors.name && (
-              <p id="contact-name-error" className="contacts-error" role="alert">
+            {showFieldError("name") && (
+              <p id="contact-name-error" className="contact-field__error" role="alert">
                 {errors.name}
               </p>
             )}
           </div>
 
-          <div className="contacts-form__field">
+          <div className="contact-field">
             <label htmlFor="contact-email" className={labelClassName}>
               Email <span className="contacts-required">*</span>
             </label>
@@ -219,22 +215,21 @@ export function ContactForm() {
               autoComplete="email"
               value={fields.email}
               onChange={(e) => updateField("email", e.target.value)}
-              onBlur={() => handleBlur("email")}
-              className={fieldClassName(Boolean(showError("email") && errors.email))}
-              aria-invalid={Boolean(showError("email") && errors.email)}
+              className={fieldClassName(showFieldError("email"))}
+              aria-invalid={showFieldError("email")}
               aria-describedby={
-                showError("email") && errors.email ? "contact-email-error" : undefined
+                showFieldError("email") ? "contact-email-error" : undefined
               }
             />
-            {showError("email") && errors.email && (
-              <p id="contact-email-error" className="contacts-error" role="alert">
+            {showFieldError("email") && (
+              <p id="contact-email-error" className="contact-field__error" role="alert">
                 {errors.email}
               </p>
             )}
           </div>
         </div>
 
-        <div className="contacts-form__field">
+        <div className="contact-field">
           <label htmlFor="contact-message" className={labelClassName}>
             Ваш вопрос / предложение <span className="contacts-required">*</span>
           </label>
@@ -244,35 +239,29 @@ export function ContactForm() {
             rows={5}
             value={fields.message}
             onChange={(e) => updateField("message", e.target.value)}
-            onBlur={() => handleBlur("message")}
-            className={`${fieldClassName(Boolean(showError("message") && errors.message))} contacts-field--textarea`}
-            aria-invalid={Boolean(showError("message") && errors.message)}
+            className={`${fieldClassName(showFieldError("message"))} contacts-field--textarea`}
+            aria-invalid={showFieldError("message")}
             aria-describedby={
-              showError("message") && errors.message
-                ? "contact-message-error"
-                : undefined
+              showFieldError("message") ? "contact-message-error" : undefined
             }
           />
-          {showError("message") && errors.message && (
-            <p id="contact-message-error" className="contacts-error" role="alert">
+          {showFieldError("message") && (
+            <p id="contact-message-error" className="contact-field__error" role="alert">
               {errors.message}
             </p>
           )}
         </div>
 
-        <div className="contacts-form__field">
+        <div className="contact-field contact-field--consent">
           <label className="contacts-consent">
             <input
               type="checkbox"
               checked={fields.consent}
               onChange={(e) => updateField("consent", e.target.checked)}
-              onBlur={() => handleBlur("consent")}
               className="contacts-consent__input"
-              aria-invalid={Boolean(showError("consent") && errors.consent)}
+              aria-invalid={showFieldError("consent")}
               aria-describedby={
-                showError("consent") && errors.consent
-                  ? "contact-consent-error"
-                  : undefined
+                showFieldError("consent") ? "contact-consent-error" : undefined
               }
             />
             <span>
@@ -286,8 +275,8 @@ export function ContactForm() {
               </button>
             </span>
           </label>
-          {showError("consent") && errors.consent && (
-            <p id="contact-consent-error" className="contacts-error" role="alert">
+          {showFieldError("consent") && (
+            <p id="contact-consent-error" className="contact-field__error" role="alert">
               {errors.consent}
             </p>
           )}
@@ -308,8 +297,8 @@ export function ContactForm() {
         <button
           type="submit"
           className="contacts-submit btn-gradient"
-          aria-disabled={!isFormReady || submitting}
-          data-disabled={!isFormReady || submitting}
+          aria-disabled={!isFormReady}
+          data-disabled={!isFormReady}
           aria-busy={submitting}
         >
           {submitting ? "Отправляю..." : "Отправить заявку"}
