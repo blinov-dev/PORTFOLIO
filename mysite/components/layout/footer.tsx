@@ -10,17 +10,9 @@ export function Footer() {
       <Container>
         <div className="flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.name}. Frontend-разработчик.
+            © {year} {siteConfig.name}
           </p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <a
-              href="#contacts"
-              className="transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              Связаться
-            </a>
-            <PrivacyPolicyLink className="text-sm text-muted-foreground" />
-          </div>
+          <PrivacyPolicyLink className="text-sm text-muted-foreground" />
         </div>
       </Container>
     </footer>
