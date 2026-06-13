@@ -19,12 +19,12 @@ export function Section({
   return (
     <section
       id={id}
-      className={`scroll-mt-24 py-14 sm:py-16 lg:py-20 ${className}`}
+      className={`scroll-mt-24 py-10 ${className}`}
       aria-labelledby={title ? `${id}-title` : undefined}
     >
       <Container>
         {(title || description) && (
-          <header className="mb-8 sm:mb-10">
+          <header className="mb-4 sm:mb-6">
             {title && (
               <h2
                 id={title ? `${id}-title` : undefined}
