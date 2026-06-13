@@ -1,50 +1,50 @@
-import { Card } from "@/components/ui/card";
 import { Section } from "@/components/layout/section";
-import { contacts } from "@/lib/content/contacts";
+import {
+  contacts,
+  contactsSectionDescription,
+} from "@/lib/content/contacts";
 import { ContactForm } from "./contact-form";
-import { SocialLinks } from "./social-links";
+import { ContactIconGlyph } from "./contact-icon";
 
 export function ContactsSection() {
   return (
     <Section
       id="contacts"
       title="Контакты"
-      description="Напишите в форму или выберите удобный способ связи"
+      description={contactsSectionDescription}
     >
-      <div className="grid gap-4 lg:grid-cols-2 lg:gap-6">
-        <Card hover className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold">Быстрая связь</h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Telegram, email или GitHub — отвечу в рабочее время
-            </p>
-          </div>
-          <ul className="space-y-4">
+      <div className="contacts-panel glass-surface">
+        <div className="contacts-panel__glow" aria-hidden="true" />
+
+        <section className="contacts-panel__details" aria-label="Контактные данные">
+          <ul className="contacts-grid">
             {contacts.map((contact) => (
               <li key={contact.label}>
-                <p className="text-sm text-muted-foreground">{contact.label}</p>
-                {contact.href ? (
-                  <a
-                    href={contact.href}
-                    className="font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    {...(contact.href.startsWith("http")
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                  >
-                    {contact.value}
-                  </a>
-                ) : (
-                  <p className="font-medium">{contact.value}</p>
-                )}
+                <a
+                  href={contact.href}
+                  className="contacts-card"
+                  {...(contact.href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  <span className="contacts-card__icon" aria-hidden="true">
+                    <ContactIconGlyph icon={contact.icon} />
+                  </span>
+                  <span className="contacts-card__body">
+                    <span className="contacts-card__label">{contact.label}</span>
+                    <span className="contacts-card__value">{contact.value}</span>
+                  </span>
+                </a>
               </li>
             ))}
           </ul>
-          <SocialLinks />
-        </Card>
+        </section>
 
-        <Card hover className="relative">
+        <div className="contacts-panel__divider" aria-hidden="true" />
+
+        <section className="contacts-panel__form" aria-label="Форма связи">
           <ContactForm />
-        </Card>
+        </section>
       </div>
     </Section>
   );
