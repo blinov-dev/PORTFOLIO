@@ -3,32 +3,99 @@ import type { ProjectMockupType } from "@/lib/content/projects";
 type ProjectMockupProps = {
   type: ProjectMockupType;
   featured?: boolean;
+  compact?: boolean;
 };
 
-export function ProjectMockup({ type, featured = false }: ProjectMockupProps) {
-  const height = featured ? "min-h-[11rem] sm:min-h-[13rem]" : "min-h-[9rem]";
+function mockupClassName(featured: boolean, compact: boolean) {
+  return [
+    "project-mockup",
+    featured ? "project-mockup--featured" : "",
+    compact ? "project-mockup--compact" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
+export function ProjectMockup({
+  type,
+  featured = false,
+  compact = false,
+}: ProjectMockupProps) {
+  const baseClass = mockupClassName(featured, compact);
+
+  if (type === "crm") {
+    return (
+      <div className={`${baseClass} project-mockup--crm`} aria-hidden="true">
+        <div className="project-mockup__chrome">
+          <div className="project-mockup__dots" />
+          <div className="project-mockup__url" />
+          <div className="project-mockup__pill">CRM / ITSM</div>
+        </div>
+        <div className="project-mockup__crm-layout">
+          <div className="project-mockup__crm-sidebar">
+            <div className="project-mockup__crm-nav project-mockup__crm-nav--active" />
+            <div className="project-mockup__crm-nav" />
+            <div className="project-mockup__crm-nav" />
+            <div className="project-mockup__crm-nav" />
+          </div>
+          <div className="project-mockup__crm-main">
+            <div className="project-mockup__crm-metrics">
+              {["Открыто", "В работе", "SLA"].map((label, index) => (
+                <div key={label} className="project-mockup__crm-metric">
+                  <span className="project-mockup__crm-metric-label">{label}</span>
+                  <span className="project-mockup__crm-metric-value">
+                    {index === 0 ? "24" : index === 1 ? "11" : "98%"}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="project-mockup__crm-board">
+              {[
+                { title: "Новые", count: 5, tone: "primary" },
+                { title: "В работе", count: 8, tone: "secondary" },
+                { title: "На проверке", count: 3, tone: "accent" },
+                { title: "Готово", count: 12, tone: "muted" },
+              ].map((column) => (
+                <div
+                  key={column.title}
+                  className={`project-mockup__crm-column project-mockup__crm-column--${column.tone}`}
+                >
+                  <div className="project-mockup__crm-column-head">
+                    <span>{column.title}</span>
+                    <span>{column.count}</span>
+                  </div>
+                  <div className="project-mockup__crm-ticket" />
+                  <div className="project-mockup__crm-ticket project-mockup__crm-ticket--short" />
+                  {featured && column.tone !== "muted" ? (
+                    <div className="project-mockup__crm-ticket project-mockup__crm-ticket--accent" />
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (type === "ecommerce") {
     return (
-      <div
-        className={`relative overflow-hidden bg-gradient-to-br from-primary/8 via-muted/30 to-secondary/8 p-3 sm:p-4 ${height}`}
-        aria-hidden="true"
-      >
-        <div className="mb-2 flex items-center justify-between">
-          <div className="h-2 w-20 rounded bg-foreground/15" />
-          <div className="rounded-full bg-secondary/20 px-2 py-0.5 text-[9px] font-medium text-secondary">
-            Корзина · 3
-          </div>
+      <div className={`${baseClass} project-mockup--ecommerce`} aria-hidden="true">
+        <div className="project-mockup__chrome">
+          <div className="project-mockup__dots" />
+          <div className="project-mockup__url" />
+          <div className="project-mockup__pill">Каталог</div>
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="project-mockup__ecom-toolbar">
+          <div className="project-mockup__ecom-search" />
+          <div className="project-mockup__ecom-cart">Корзина · 3</div>
+        </div>
+        <div className="project-mockup__ecom-grid">
           {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div
-              key={item}
-              className="rounded-lg bg-background/70 p-1.5 shadow-sm"
-            >
-              <div className="mb-1.5 aspect-square rounded-md bg-gradient-to-br from-primary/15 to-secondary/10" />
-              <div className="h-1 w-full rounded bg-foreground/15" />
-              <div className="mt-1 h-1 w-2/3 rounded bg-primary/20" />
+            <div key={item} className="project-mockup__ecom-card">
+              <div className="project-mockup__ecom-image" />
+              <div className="project-mockup__ecom-line" />
+              <div className="project-mockup__ecom-price" />
             </div>
           ))}
         </div>
@@ -38,41 +105,34 @@ export function ProjectMockup({ type, featured = false }: ProjectMockupProps) {
 
   if (type === "onboarding") {
     return (
-      <div
-        className={`relative overflow-hidden bg-gradient-to-br from-secondary/8 via-muted/30 to-accent/8 p-3 sm:p-4 ${height}`}
-        aria-hidden="true"
-      >
-        <div className="mb-3 flex items-center gap-2">
-          {["Шаг 1", "Шаг 2", "Шаг 3"].map((step, i) => (
+      <div className={`${baseClass} project-mockup--onboarding`} aria-hidden="true">
+        <div className="project-mockup__chrome">
+          <div className="project-mockup__dots" />
+          <div className="project-mockup__url" />
+          <div className="project-mockup__pill">Onboarding</div>
+        </div>
+        <div className="project-mockup__onb-steps">
+          {["Шаг 1", "Шаг 2", "Шаг 3"].map((step, index) => (
             <div
               key={step}
-              className={`flex-1 rounded-lg px-2 py-1.5 text-center text-[9px] font-medium ${
-                i === 1
-                  ? "bg-primary/20 text-primary"
-                  : "bg-background/60 text-muted-foreground"
+              className={`project-mockup__onb-step ${
+                index === 1 ? "project-mockup__onb-step--active" : ""
               }`}
             >
               {step}
             </div>
           ))}
         </div>
-        <div className="space-y-2 rounded-lg bg-background/60 p-2">
+        <div className="project-mockup__onb-panel">
           {["Профиль стажёра", "Onboarding-путь", "Материалы курса"].map(
-            (row, i) => (
-              <div
-                key={row}
-                className="flex items-center gap-2 rounded-md bg-muted/40 px-2 py-1.5"
-              >
+            (row, index) => (
+              <div key={row} className="project-mockup__onb-row">
                 <span
-                  className={`size-2 rounded-full ${
-                    i === 0
-                      ? "bg-accent"
-                      : i === 1
-                        ? "bg-primary"
-                        : "bg-secondary"
+                  className={`project-mockup__onb-dot project-mockup__onb-dot--${
+                    index === 0 ? "accent" : index === 1 ? "primary" : "secondary"
                   }`}
                 />
-                <span className="text-[9px] text-foreground/85">{row}</span>
+                <span>{row}</span>
               </div>
             ),
           )}
@@ -81,75 +141,27 @@ export function ProjectMockup({ type, featured = false }: ProjectMockupProps) {
     );
   }
 
-  if (type === "uikit") {
-    return (
-      <div
-        className={`relative overflow-hidden bg-gradient-to-br from-muted/40 via-background/50 to-primary/8 p-3 sm:p-4 ${height}`}
-        aria-hidden="true"
-      >
-        <div className="mb-2 text-[9px] font-medium uppercase tracking-wider text-muted-foreground">
-          UI-kit · Storybook
-        </div>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="space-y-1.5 rounded-lg bg-background/70 p-2">
-            <div className="h-5 rounded-md bg-primary/25" />
-            <div className="h-5 rounded-md border border-border/60 bg-background" />
-            <div className="h-5 rounded-md bg-muted/60" />
-          </div>
-          <div className="space-y-1.5 rounded-lg bg-background/70 p-2">
-            <div className="h-3 w-3/4 rounded bg-foreground/15" />
-            <div className="h-8 rounded-lg border border-border/50" />
-            <div className="flex gap-1">
-              <div className="h-4 flex-1 rounded-full bg-accent/25" />
-              <div className="h-4 flex-1 rounded-full bg-secondary/20" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div
-      className={`relative overflow-hidden bg-gradient-to-br from-primary/8 via-muted/30 to-secondary/8 p-3 sm:p-4 ${height}`}
-      aria-hidden="true"
-    >
-      <div className="mb-2 flex gap-2">
-        {["Все", "Новые", "В работе"].map((tab, i) => (
-          <div
-            key={tab}
-            className={`rounded-md px-2 py-0.5 text-[10px] font-medium ${
-              i === 1
-                ? "bg-primary/20 text-primary"
-                : "bg-background/60 text-muted-foreground"
-            }`}
-          >
-            {tab}
-          </div>
-        ))}
+    <div className={`${baseClass} project-mockup--uikit`} aria-hidden="true">
+      <div className="project-mockup__chrome">
+        <div className="project-mockup__dots" />
+        <div className="project-mockup__url" />
+        <div className="project-mockup__pill">UI-kit</div>
       </div>
-      <div className="grid grid-cols-3 gap-2">
-        {[
-          { c: "bg-primary/15", n: "12" },
-          { c: "bg-secondary/15", n: "5" },
-          { c: "bg-accent/15", n: "3" },
-        ].map((col, i) => (
-          <div key={i} className={`space-y-1.5 rounded-lg ${col.c} p-2`}>
-            <div className="h-1.5 w-8 rounded bg-foreground/20" />
-            {[1, 2].map((k) => (
-              <div
-                key={k}
-                className="rounded-md bg-background/70 p-1.5 shadow-sm"
-              >
-                <div className="mb-1 h-1 w-full rounded bg-foreground/15" />
-                <div className="h-1 w-2/3 rounded bg-foreground/10" />
-              </div>
-            ))}
-            <span className="text-[9px] font-bold text-foreground/40">
-              {col.n}
-            </span>
+      <div className="project-mockup__uikit-grid">
+        <div className="project-mockup__uikit-panel">
+          <div className="project-mockup__uikit-btn project-mockup__uikit-btn--primary" />
+          <div className="project-mockup__uikit-btn project-mockup__uikit-btn--ghost" />
+          <div className="project-mockup__uikit-btn project-mockup__uikit-btn--muted" />
+        </div>
+        <div className="project-mockup__uikit-panel">
+          <div className="project-mockup__uikit-line" />
+          <div className="project-mockup__uikit-input" />
+          <div className="project-mockup__uikit-pills">
+            <span />
+            <span />
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

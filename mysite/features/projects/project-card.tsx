@@ -1,49 +1,63 @@
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import type { ProjectItem } from "@/lib/content/projects";
 import { ProjectMockup } from "./project-mockup";
 
+type ProjectCardVariant = "featured" | "support-tall" | "support-wide" | "support-compact";
+
 type ProjectCardProps = {
   project: ProjectItem;
-  featured?: boolean;
+  variant?: ProjectCardVariant;
 };
 
-export function ProjectCard({ project, featured = false }: ProjectCardProps) {
-  const hasLink = project.href !== "#" && project.href.startsWith("http");
+const variantClassName: Record<ProjectCardVariant, string> = {
+  featured: "project-card project-card--featured",
+  "support-tall": "project-card project-card--support-tall",
+  "support-wide": "project-card project-card--support-wide",
+  "support-compact": "project-card project-card--support-compact",
+};
+
+export function ProjectCard({
+  project,
+  variant = "support-tall",
+}: ProjectCardProps) {
+  const isFeatured = variant === "featured";
 
   return (
-    <Card hover className="flex h-full flex-col gap-0 overflow-hidden p-0">
-      <ProjectMockup type={project.mockup} featured={featured} />
-      <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
-        <div>
-          <h3 className="text-lg font-semibold">{project.title}</h3>
-          <p className="mt-1 text-xs font-medium text-primary">
-            {project.outcome}
-          </p>
+    <article className={variantClassName[variant]}>
+      <div className="project-card__mockup">
+        <ProjectMockup
+          type={project.mockup}
+          featured={isFeatured}
+          compact={variant === "support-compact"}
+        />
+      </div>
+
+      <div className="project-card__body">
+        {isFeatured && project.featuredBadge ? (
+          <Badge variant="glass" className="project-card__badge">
+            {project.featuredBadge}
+          </Badge>
+        ) : null}
+
+        <div className="project-card__head">
+          <h3 className="project-card__title">{project.title}</h3>
+          <p className="project-card__outcome">{project.outcome}</p>
         </div>
-        <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
-          {project.description}
-        </p>
-        <div className="flex flex-wrap gap-2">
+
+        <p className="project-card__description">{project.description}</p>
+
+        <div className="project-card__tags">
           {project.tags.map((tag) => (
             <Badge key={tag} variant="gradient">
               {tag}
             </Badge>
           ))}
         </div>
-        {hasLink ? (
-          <a
-            href={project.href}
-            className="text-sm font-medium text-primary transition-colors hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Подробнее →
-          </a>
-        ) : (
-          <p className="text-xs text-muted-foreground">Кейс из коммерческой практики</p>
-        )}
+
+        {project.note ? (
+          <p className="project-card__note">{project.note}</p>
+        ) : null}
       </div>
-    </Card>
+    </article>
   );
 }
