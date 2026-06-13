@@ -1,86 +1,115 @@
-export type SkillGroup = {
+export type SkillIconId =
+  | "react"
+  | "nextjs"
+  | "typescript"
+  | "javascript"
+  | "html"
+  | "css"
+  | "cssmodules"
+  | "tailwind"
+  | "rtkquery"
+  | "api"
+  | "git";
+
+export type SkillTileSize = "lg" | "md" | "sm";
+
+export type SkillVisualTile = {
   id: string;
-  title: string;
-  description: string;
-  items: string[];
-  featured?: boolean;
+  label: string;
+  icon: SkillIconId;
+  brandColor: string;
+  size: SkillTileSize;
+  idleFloat?: boolean;
+  idleDelay?: number;
 };
 
-export const skillGroups: SkillGroup[] = [
+export const skillsSectionDescription =
+  "Технологии и рабочие инструменты, которые помогают мне создавать понятные, быстрые и поддерживаемые интерфейсы.";
+
+export const visualSkills: SkillVisualTile[] = [
   {
-    id: "frontend",
-    title: "Основной frontend",
-    description:
-      "Компоненты, маршрутизация, типизация и интерфейсы, которые удобно поддерживать.",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
-    featured: true,
+    id: "react",
+    label: "React",
+    icon: "react",
+    brandColor: "#61DAFB",
+    size: "lg",
+    idleFloat: true,
+    idleDelay: 0,
+  },
+  {
+    id: "nextjs",
+    label: "Next.js",
+    icon: "nextjs",
+    brandColor: "hsl(var(--foreground))",
+    size: "lg",
+    idleFloat: true,
+    idleDelay: 0.4,
+  },
+  {
+    id: "typescript",
+    label: "TypeScript",
+    icon: "typescript",
+    brandColor: "#3178C6",
+    size: "lg",
+    idleFloat: true,
+    idleDelay: 0.8,
+  },
+  {
+    id: "javascript",
+    label: "JavaScript",
+    icon: "javascript",
+    brandColor: "#F7DF1E",
+    size: "lg",
+    idleFloat: true,
+    idleDelay: 0.2,
+  },
+  {
+    id: "html",
+    label: "HTML",
+    icon: "html",
+    brandColor: "#E34F26",
+    size: "md",
+  },
+  {
+    id: "css",
+    label: "CSS",
+    icon: "css",
+    brandColor: "#1572B6",
+    size: "md",
+  },
+  {
+    id: "cssmodules",
+    label: "CSS Modules",
+    icon: "cssmodules",
+    brandColor: "#4B70F5",
+    size: "md",
+  },
+  {
+    id: "tailwind",
+    label: "Tailwind CSS",
+    icon: "tailwind",
+    brandColor: "#38BDF8",
+    size: "md",
+  },
+  {
+    id: "rtkquery",
+    label: "RTK Query",
+    icon: "rtkquery",
+    brandColor: "#764ABC",
+    size: "md",
   },
   {
     id: "api",
-    title: "Данные и API",
-    description:
-      "Интеграция с backend, состояния загрузки, ошибки и устойчивый UI.",
-    items: [
-      "Redux Toolkit",
-      "RTK Query",
-      "REST API",
-      "Axios / fetch",
-      "Кеширование",
-      "Обработка ошибок",
-    ],
+    label: "REST API",
+    icon: "api",
+    brandColor: "#10B981",
+    size: "md",
   },
   {
-    id: "forms",
-    title: "Формы и состояния",
-    description:
-      "Формы, понятные сообщения, валидация и сценарии пользователя.",
-    items: [
-      "React Hook Form",
-      "Zod",
-      "Валидация",
-      "UX ошибок",
-      "Loading / empty / error states",
-    ],
-  },
-  {
-    id: "ui",
-    title: "UI и адаптив",
-    description:
-      "Адаптивные интерфейсы, переиспользуемые компоненты, темы и базовая доступность.",
-    items: [
-      "Tailwind CSS",
-      "SCSS",
-      "Styled Components",
-      "Адаптивная вёрстка",
-      "UI-kit",
-      "Storybook",
-      "Доступность",
-    ],
-  },
-  {
-    id: "performance",
-    title: "Производительность и SEO",
-    description:
-      "Быстрая загрузка, аккуратный первый рендер и базовая SEO-подготовка.",
-    items: [
-      "SSR",
-      "Оптимизация данных",
-      "Оптимизация изображений",
-      "Базовое SEO",
-    ],
-  },
-  {
-    id: "workflow",
-    title: "Рабочий процесс",
-    description:
-      "Понятные задачи, ревью, коммуникация и развитие проекта после запуска.",
-    items: [
-      "Git",
-      "Декомпозиция задач",
-      "Code review",
-      "Коммуникация с backend",
-      "Работа с менеджерами",
-      "Поддержка проекта",
-    ],
+    id: "git",
+    label: "Git",
+    icon: "git",
+    brandColor: "#F05032",
+    size: "sm",
   },
 ];
