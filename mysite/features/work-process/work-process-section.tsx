@@ -1,42 +1,52 @@
-import { Card } from "@/components/ui/card";
+import type { CSSProperties } from "react";
 import { Section } from "@/components/layout/section";
-import { workSteps } from "@/lib/content/work-process";
+import {
+  workProcessDescription,
+  workSteps,
+} from "@/lib/content/work-process";
 
 export function WorkProcessSection() {
   return (
     <Section
       id="process"
       title="Как я работаю"
-      description="Прозрачный процесс — без сюрпризов на финишной прямой"
+      description={workProcessDescription}
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-        {workSteps.map((step, index) => (
-          <Card
-            key={step.step}
-            hover
-            className={`flex flex-col gap-3 ${
-              index === 0
-                ? "border-primary/25 bg-primary/[0.04] sm:col-span-2 lg:col-span-2 lg:row-span-2"
-                : index === 4
-                  ? "sm:col-span-2 lg:col-span-2"
-                  : "lg:col-span-2"
-            }`}
-          >
-            <span
-              className={`inline-flex w-fit rounded-xl px-2.5 py-1 text-xs font-bold ${
-                index === 0
-                  ? "gradient-text bg-primary/10"
-                  : "bg-muted text-muted-foreground"
-              }`}
-            >
-              {step.step}
-            </span>
-            <h3 className="text-base font-semibold leading-snug">{step.title}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {step.description}
-            </p>
-          </Card>
-        ))}
+      <div className="process-pipeline glass-surface">
+        <div className="process-pipeline__glow" aria-hidden="true" />
+        <ol className="process-timeline">
+          {workSteps.map((step, index) => {
+            const isFirst = index === 0;
+            const isLast = index === workSteps.length - 1;
+
+            return (
+              <li
+                key={step.step}
+                className={[
+                  "process-step",
+                  isFirst ? "process-step--start" : "",
+                  isLast ? "process-step--end" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                style={{ "--step-index": index } as CSSProperties}
+              >
+                <div className="process-step__rail" aria-hidden="true">
+                  <span className="process-step__marker">{step.step}</span>
+                </div>
+                <article className="process-step__card">
+                  <span className="process-step__badge">{step.step}</span>
+                  <h3 className="process-step__title">{step.title}</h3>
+                  <p className="process-step__text">{step.description}</p>
+                  <p className="process-step__output">
+                    <span className="process-step__output-label">На выходе:</span>{" "}
+                    {step.output}
+                  </p>
+                </article>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </Section>
   );
