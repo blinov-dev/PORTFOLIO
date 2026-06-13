@@ -78,13 +78,12 @@ export function Logo({
     >
       <LogoMark gradientId={gradientId} />
       <span className="logo-text">
-        {compact ? (
+        {!compact ? (
           <>
-            <span className="sm:hidden">Blinov.dev</span>
-            <span className="hidden sm:inline">Александр Блинов</span>
+            <span>Blinov.dev</span>
           </>
         ) : (
-          <span>Александр Блинов</span>
+          null
         )}
       </span>
     </a>

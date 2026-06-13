@@ -10,7 +10,7 @@ export function Header() {
     <header className="glass-header sticky top-0 z-50">
       <Container>
         <div className="flex h-[4.25rem] items-center justify-between gap-3 sm:gap-4">
-          <Logo compact className="min-w-0 shrink" />
+          <Logo className="min-w-0 shrink" />
 
           <div className="header-actions flex items-center gap-2 sm:gap-3">
             <SiteNav items={navItems} className="hidden lg:block" />

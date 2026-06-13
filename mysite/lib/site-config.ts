@@ -5,10 +5,9 @@ export const siteConfig = {
   pitch:
     "Разрабатываю интерфейсы для бизнеса и продуктовых команд: интернет-магазины, личные кабинеты, админ-панели, B2B-сервисы и лендинги.",
   metaDescription:
-    "Frontend-разработчик React / Next.js / TypeScript. E-commerce, SPA, админки, B2B и лендинги. Открыт к удалёнке и проектам.",
-  availability: "Открыт к удалённой работе, проектам и фрилансу.",
+    "Frontend-разработчик React / Next.js / TypeScript. E-commerce, SPA, админки, B2B и лендинги.",
+  availability: "Открыт к новым задачам, проектам и фрилансу.",
   profileImage: "/images/portfolio-me-photo.jpg",
-  heroChips: ["RTK Query", "Forms / API", "Remote / Freelance"],
   experience: "3+",
   url: "https://portfolio-black-eight-gklwvfrewp.vercel.app",
   ogImage: "/images/profile-placeholder.svg",

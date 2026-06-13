@@ -43,14 +43,6 @@ export function HeroSection() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2" aria-label="Ключевой стек">
-              {siteConfig.heroChips.map((tag) => (
-                <span key={tag} className="hero-chip">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
             <div className="flex flex-wrap gap-3">
               <Button href="#contacts">Связаться</Button>
               <Button href="#projects" variant="secondary">
@@ -59,9 +51,6 @@ export function HeroSection() {
             </div>
 
             <div className="border-t border-border/60 pt-4">
-              <p className="mb-3 text-sm text-muted-foreground">
-                Telegram или email
-              </p>
               <SocialLinks />
             </div>
           </div>

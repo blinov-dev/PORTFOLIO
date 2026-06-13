@@ -3,10 +3,13 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/lib/site-config";
 
+
+
+
 const capabilityBlocks = [
   {
-    title: "API-интеграции",
-    hint: "REST, кеш, ошибки",
+    title: "Основной стек",
+    hint: "React · Next.js · TypeScript",
     tone: "primary" as const,
   },
   {
@@ -15,8 +18,8 @@ const capabilityBlocks = [
     tone: "secondary" as const,
   },
   {
-    title: "Адаптивный UI",
-    hint: "mobile-first, темы",
+    title: "UI/UX",
+    hint: "Адаптив · доступность · темы",
     tone: "accent" as const,
   },
 ];
@@ -125,7 +128,7 @@ export function ProfileImage() {
                 Направления
               </p>
               <p className="mt-1 text-xs leading-relaxed text-foreground/85">
-                Интернет-магазины · SPA · админки · B2B · лендинги
+                Интернет-магазины · SPA  · админки · лендинги
               </p>
             </div>
 
@@ -136,13 +139,12 @@ export function ProfileImage() {
                 style={{ "--hero-cap-i": index + 1 } as CSSProperties}
               >
                 <p
-                  className={`text-xs font-semibold leading-tight ${
-                    block.tone === "primary"
-                      ? "text-primary"
-                      : block.tone === "secondary"
-                        ? "text-secondary"
-                        : "text-accent"
-                  }`}
+                  className={`text-xs font-semibold leading-tight ${block.tone === "primary"
+                    ? "text-primary"
+                    : block.tone === "secondary"
+                      ? "text-secondary"
+                      : "text-accent"
+                    }`}
                 >
                   {block.title}
                 </p>
