@@ -33,6 +33,9 @@ export function ServicesInteractive({
   tasks = serviceTasks,
 }: ServicesInteractiveProps) {
   const [activeId, setActiveId] = useState(tasks[0]?.id ?? "");
+  const [openMobileId, setOpenMobileId] = useState<string | null>(
+    tasks[0]?.id ?? null,
+  );
 
   const activeTask = useMemo(
     () => tasks.find((task) => task.id === activeId) ?? tasks[0],
@@ -94,7 +97,7 @@ export function ServicesInteractive({
 
       <div className="services-accordion lg:hidden">
         {tasks.map((task) => {
-          const isOpen = task.id === activeId;
+          const isOpen = task.id === openMobileId;
           const triggerId = `service-accordion-trigger-${task.id}`;
           const panelId = `service-accordion-panel-${task.id}`;
 
@@ -114,25 +117,33 @@ export function ServicesInteractive({
                 className="services-accordion__trigger"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
-                onClick={() => setActiveId(task.id)}
+                onClick={() =>
+                  setOpenMobileId((current) =>
+                    current === task.id ? null : task.id,
+                  )
+                }
               >
                 <span className="services-accordion__trigger-text">
                   {task.title}
                 </span>
                 <span className="services-accordion__chevron" aria-hidden="true" />
               </button>
-              {isOpen ? (
-                <div
-                  id={panelId}
-                  role="region"
-                  aria-labelledby={triggerId}
-                  className="services-accordion__panel"
-                >
+              <div
+                id={panelId}
+                className={[
+                  "services-accordion__panel",
+                  isOpen ? "services-accordion__panel--open" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                aria-hidden={!isOpen}
+              >
+                <div className="services-accordion__panel-content">
                   <div className="services-accordion__panel-inner">
                     <TaskDetails task={task} />
                   </div>
                 </div>
-              ) : null}
+              </div>
             </div>
           );
         })}
