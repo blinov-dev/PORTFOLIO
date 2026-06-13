@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Container } from "./container";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 type SectionProps = {
   id?: string;
@@ -26,12 +27,9 @@ export function Section({
         {(title || description) && (
           <header className="mb-4 sm:mb-6">
             {title && (
-              <h2
-                id={title ? `${id}-title` : undefined}
-                className="text-2xl font-semibold tracking-tight sm:text-3xl"
-              >
+              <SectionHeading id={id ? `${id}-title` : undefined}>
                 {title}
-              </h2>
+              </SectionHeading>
             )}
             {description && (
               <p className="mt-2 max-w-2xl text-muted-foreground">
