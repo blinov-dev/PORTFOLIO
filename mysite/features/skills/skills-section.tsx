@@ -10,15 +10,15 @@ export function SkillsSection() {
       title="Стек и инструменты"
       description="Технологии под задачу — без бесконечного списка ради списка"
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((group) => (
           <Card
             key={group.title}
             hover
             className={
               group.featured
-                ? "border-primary/25 bg-gradient-to-br from-primary/[0.06] to-secondary/[0.04] sm:col-span-2 lg:col-span-7 lg:row-span-2"
-                : "lg:col-span-5"
+                ? "border-primary/25 bg-gradient-to-br from-primary/[0.06] to-secondary/[0.04] sm:col-span-2"
+                : ""
             }
           >
             <h3

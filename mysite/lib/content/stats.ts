@@ -5,8 +5,20 @@ export type StatItem = {
 };
 
 export const stats: StatItem[] = [
-  { value: "3+", label: "года в коммерции", hint: "React / Next.js" },
-  { value: "CRM · B2B", label: "основной фокус", hint: "админки и кабинеты" },
-  { value: "Next.js", label: "основной стек", hint: "React · TypeScript" },
-  { value: "Available", label: "открыт к проектам", hint: "фриланс и part-time" },
+  { value: "3+", label: "года в коммерции", hint: "frontend-разработка" },
+  {
+    value: "React · Next.js",
+    label: "основной стек",
+    hint: "TypeScript",
+  },
+  {
+    value: "E-commerce",
+    label: "опыт в продуктах",
+    hint: "internal tools · UI-kit",
+  },
+  {
+    value: "Открыт",
+    label: "к работе и проектам",
+    hint: "удалёнка · фриланс · part-time",
+  },
 ];

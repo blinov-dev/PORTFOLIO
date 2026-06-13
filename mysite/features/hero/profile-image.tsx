@@ -2,9 +2,9 @@ import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/lib/site-config";
 
 const dashboardTiles = [
-  { label: "Заявки", value: "24", tone: "primary" as const },
-  { label: "В работе", value: "8", tone: "secondary" as const },
-  { label: "Done", value: "96%", tone: "accent" as const },
+  { label: "Каталог", value: "1.2k", tone: "primary" as const },
+  { label: "В корзине", value: "18", tone: "secondary" as const },
+  { label: "Заказы", value: "96%", tone: "accent" as const },
 ];
 
 const floatingBadges = [
@@ -12,8 +12,8 @@ const floatingBadges = [
   { label: "Next.js", variant: "glass" as const, className: "top-8 -right-2 sm:right-4" },
   { label: "React", variant: "glass" as const, className: "top-1/2 -left-2 sm:left-4" },
   { label: "TypeScript", variant: "glass" as const, className: "top-[42%] -right-2 sm:right-2" },
-  { label: "CRM/B2B UI", variant: "gradient" as const, className: "bottom-16 left-2 sm:left-6" },
-  { label: "Available", variant: "accent" as const, className: "-bottom-3 right-4 sm:right-8" },
+  { label: "E-commerce", variant: "gradient" as const, className: "bottom-16 left-2 sm:left-6" },
+  { label: "Открыт к проектам", variant: "accent" as const, className: "-bottom-3 right-4 sm:right-8" },
 ];
 
 export function ProfileImage() {
@@ -54,7 +54,6 @@ export function ProfileImage() {
         />
 
         <div className="relative grid gap-3 sm:grid-cols-5 sm:gap-4">
-          {/* Profile focal */}
           <div className="glass-surface relative flex flex-col items-center justify-center rounded-2xl border-primary/15 p-5 sm:col-span-2 sm:min-h-[220px]">
             <div className="relative mb-3 flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/25 via-secondary/15 to-accent/10 ring-2 ring-primary/20 sm:size-24">
               <span className="gradient-text text-2xl font-bold sm:text-3xl">
@@ -71,13 +70,14 @@ export function ProfileImage() {
             </p>
           </div>
 
-          {/* Mini dashboard */}
           <div className="flex flex-col gap-3 sm:col-span-3">
             <div className="glass-surface rounded-xl px-3 py-2">
               <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                Mini dashboard
+                Product UI
               </p>
-              <p className="text-xs text-foreground/80">CRM · B2B · Admin UI</p>
+              <p className="text-xs text-foreground/80">
+                E-commerce · SPA · UI-kit
+              </p>
             </div>
 
             <div className="grid grid-cols-3 gap-2">
@@ -105,27 +105,29 @@ export function ProfileImage() {
             </div>
 
             <div className="glass-surface flex-1 space-y-2 rounded-xl p-3">
-              {["Новая заявка #1842", "Статус: в работе", "Дедлайн: завтра"].map(
-                (row, i) => (
-                  <div
-                    key={row}
-                    className="flex items-center gap-2 rounded-lg bg-muted/50 px-2 py-1.5"
-                  >
-                    <span
-                      className={`size-1.5 shrink-0 rounded-full ${
-                        i === 0
-                          ? "bg-primary"
-                          : i === 1
-                            ? "bg-secondary"
-                            : "bg-accent"
-                      }`}
-                    />
-                    <span className="truncate text-[11px] text-foreground/90">
-                      {row}
-                    </span>
-                  </div>
-                ),
-              )}
+              {[
+                "Каталог: фильтры и карточки",
+                "Корзина: оформление заказа",
+                "API: кеш и обработка ошибок",
+              ].map((row, i) => (
+                <div
+                  key={row}
+                  className="flex items-center gap-2 rounded-lg bg-muted/50 px-2 py-1.5"
+                >
+                  <span
+                    className={`size-1.5 shrink-0 rounded-full ${
+                      i === 0
+                        ? "bg-primary"
+                        : i === 1
+                          ? "bg-secondary"
+                          : "bg-accent"
+                    }`}
+                  />
+                  <span className="truncate text-[11px] text-foreground/90">
+                    {row}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

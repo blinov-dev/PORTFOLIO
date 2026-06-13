@@ -1,10 +1,19 @@
 export const siteConfig = {
   name: "Александр Блинов",
   role: "Frontend-разработчик",
-  tagline:
-    "Frontend-разработчик для интерфейсов, которые должны работать, а не просто выглядеть красиво.",
+  tagline: "Frontend-разработчик React / Next.js / TypeScript",
   pitch:
-    "Разрабатываю быстрые и понятные интерфейсы на Next.js, React и TypeScript: CRM, B2B-сервисы, админки, личные кабинеты и лендинги для бизнеса.",
+    "Разрабатываю интерфейсы для бизнеса и продуктовых команд: интернет-магазины, личные кабинеты, админ-панели, B2B-сервисы и лендинги. Работаю с API, состояниями, формами, адаптивом и поддерживаемой архитектурой.",
+  availability:
+    "Открыт к удалённой работе, проектной занятости и фриланс-задачам.",
+  heroChips: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "RTK Query",
+    "React Hook Form",
+    "UI / API / Forms",
+  ],
   experience: "3+",
   url: "https://portfolio-black-eight-gklwvfrewp.vercel.app",
   ogImage: "/images/profile-placeholder.svg",

@@ -20,7 +20,7 @@ export function HeroSection() {
                   {siteConfig.role}
                 </span>
                 <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                  {siteConfig.experience} года · Available
+                  {siteConfig.experience} года опыта
                 </span>
               </div>
 
@@ -38,19 +38,21 @@ export function HeroSection() {
               <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {siteConfig.pitch}
               </p>
+
+              <p className="max-w-xl text-sm font-medium text-foreground/90 sm:text-base">
+                {siteConfig.availability}
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {["CRM", "B2B", "Admin UI", "Next.js", "React", "TypeScript"].map(
-                (tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-border/70 bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ),
-              )}
+              {siteConfig.heroChips.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-border/70 bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
 
             <div className="flex flex-wrap gap-3">
