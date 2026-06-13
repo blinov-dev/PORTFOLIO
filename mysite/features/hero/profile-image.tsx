@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/lib/site-config";
@@ -24,12 +25,14 @@ const floatingBadges = [
   {
     label: "3+ года",
     variant: "gradient" as const,
-    className: "hero-badge hero-badge--exp -top-2 left-3 sm:left-5",
+    className:
+      "hero-badge hero-badge--exp hero-badge--float-a -top-2 left-3 sm:left-5",
   },
   {
     label: "React",
     variant: "glass" as const,
-    className: "hero-badge hero-badge--react top-10 -right-1 sm:right-3",
+    className:
+      "hero-badge hero-badge--react hero-badge--float-b top-10 -right-1 sm:right-3",
   },
   {
     label: "Next.js",
@@ -52,7 +55,8 @@ const floatingBadges = [
   {
     label: "Открыт к проектам",
     variant: "accent" as const,
-    className: "hero-badge hero-badge--open -bottom-2 right-4 sm:right-6",
+    className:
+      "hero-badge hero-badge--open hero-badge--float-c -bottom-2 right-4 sm:right-6",
   },
 ];
 
@@ -76,9 +80,10 @@ export function ProfileImage() {
       ))}
 
       <div
-        className="glass-surface hero-visual-panel relative overflow-hidden rounded-[1.75rem] p-4 sm:rounded-[2rem] sm:p-5"
+        className="glass-surface hero-visual-panel hero-visual-enter relative overflow-hidden rounded-[1.75rem] p-4 sm:rounded-[2rem] sm:p-5"
         style={{ backgroundImage: "var(--gradient-profile)" }}
       >
+        <div className="hero-ambient-glow" aria-hidden="true" />
         <div
           className="pointer-events-none absolute -right-10 -top-10 size-36 rounded-full bg-primary/12 blur-2xl"
           aria-hidden="true"
@@ -88,8 +93,8 @@ export function ProfileImage() {
           aria-hidden="true"
         />
 
-        <div className="relative grid items-center gap-4 sm:grid-cols-[1.05fr_0.95fr] sm:gap-5">
-          <div className="hero-photo-column mx-auto w-full max-w-[15.5rem] sm:max-w-none">
+        <div className="relative z-[1] grid items-center gap-4 sm:grid-cols-[1.05fr_0.95fr] sm:gap-5">
+          <div className="hero-photo-column hero-photo-enter mx-auto w-full max-w-[15.5rem] sm:max-w-none">
             <div className="hero-photo-shell rounded-[1.35rem] p-1.5 sm:rounded-[1.5rem] sm:p-2">
               <div className="hero-portrait-frame relative aspect-[4/5] overflow-hidden rounded-[1.15rem] sm:rounded-[1.25rem]">
                 <Image
@@ -112,7 +117,10 @@ export function ProfileImage() {
           </div>
 
           <div className="flex flex-col gap-2.5 sm:gap-3">
-            <div className="glass-surface rounded-xl px-3 py-2.5">
+            <div
+              className="hero-capability hero-capability-enter glass-surface rounded-xl px-3 py-2.5"
+              style={{ "--hero-cap-i": 0 } as CSSProperties}
+            >
               <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                 Направления
               </p>
@@ -121,10 +129,11 @@ export function ProfileImage() {
               </p>
             </div>
 
-            {capabilityBlocks.map((block) => (
+            {capabilityBlocks.map((block, index) => (
               <div
                 key={block.title}
-                className="hero-capability glass-surface rounded-xl px-3 py-2.5"
+                className="hero-capability hero-capability-enter glass-surface rounded-xl px-3 py-2.5"
+                style={{ "--hero-cap-i": index + 1 } as CSSProperties}
               >
                 <p
                   className={`text-xs font-semibold leading-tight ${
