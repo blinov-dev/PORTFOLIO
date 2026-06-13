@@ -10,7 +10,7 @@ export const siteConfig = {
   profileImage: "/images/portfolio-me-photo.jpg",
   experience: "3+",
   url: "https://portfolio-black-eight-gklwvfrewp.vercel.app",
-  ogImage: "/images/profile-placeholder.svg",
+  ogImage: "/images/portfolio-me-photo.jpg",
 } as const;
 
 export type NavItem = {
@@ -21,6 +21,8 @@ export type NavItem = {
 export const navItems: NavItem[] = [
   { label: "Главная", href: "#hero" },
   { label: "Обо мне", href: "#about" },
+  { label: "Услуги", href: "#services" },
+  { label: "Процесс", href: "#process" },
   { label: "Кейсы", href: "#projects" },
   { label: "Навыки", href: "#skills" },
   { label: "Контакты", href: "#contacts" },

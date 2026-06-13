@@ -5,6 +5,7 @@ import { services } from "@/lib/content/services";
 export function ServicesSection() {
   return (
     <Section
+      id="services"
       title="Чем помогу"
       description="Не просто «сделаю вёрстку» — решаю задачу бизнеса через интерфейс"
       className="border-y border-border/50 bg-muted/20"

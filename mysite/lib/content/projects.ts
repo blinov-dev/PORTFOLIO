@@ -11,7 +11,7 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
   {
-    title: "E-commerce frontend",
+    title: "Frontend интернет-магазина",
     description:
       "Frontend-часть интернет-магазина: каталог, корзина, личный кабинет, оформление заказа, интеграция с backend API через RTK Query.",
     outcome: "Покупатель проходит путь от каталога до заказа без «сломанного» UX.",
@@ -20,16 +20,16 @@ export const projects: ProjectItem[] = [
     mockup: "ecommerce",
   },
   {
-    title: "Internal onboarding platform",
+    title: "Внутренний onboarding-продукт",
     description:
       "Веб-приложение для стажёрской программы: onboarding-пути, личный кабинет, SSR на Next.js, структура проекта и работа в команде.",
     outcome: "Стажёры проходят путь в одном интерфейсе, а не в разрозненных документах.",
-    tags: ["Next.js", "TypeScript", "SSR", "Team workflow"],
+    tags: ["Next.js", "TypeScript", "SSR", "Работа в команде"],
     href: "#",
     mockup: "onboarding",
   },
   {
-    title: "UI-kit / product interfaces",
+    title: "UI-kit и продуктовые интерфейсы",
     description:
       "Переиспользуемые компоненты интерфейса на Next.js + TypeScript, документация в Storybook, согласованный UI и поддерживаемая структура.",
     outcome: "Команда собирает экраны быстрее и без расхождения в UI.",

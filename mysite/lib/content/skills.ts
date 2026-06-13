@@ -6,12 +6,12 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Frontend core",
+    title: "Основной frontend",
     items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
     featured: true,
   },
   {
-    title: "State & Data",
+    title: "Состояния и данные",
     items: [
       "Redux Toolkit",
       "RTK Query",
@@ -22,11 +22,11 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "Forms & Validation",
+    title: "Формы и валидация",
     items: ["React Hook Form", "Zod", "UX ошибок и валидации"],
   },
   {
-    title: "UI & Styling",
+    title: "UI и стили",
     items: [
       "Tailwind CSS",
       "SCSS",
@@ -37,7 +37,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "Performance & SEO",
+    title: "Производительность и SEO",
     items: [
       "SSR",
       "Оптимизация загрузки данных",
@@ -46,7 +46,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "Workflow",
+    title: "Рабочий процесс",
     items: [
       "Git",
       "Декомпозиция задач",
