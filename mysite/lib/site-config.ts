@@ -8,7 +8,6 @@ export const siteConfig = {
     "Frontend-разработчик React / Next.js / TypeScript. E-commerce, SPA, админки, B2B и лендинги.",
   availability: "Открыт к новым задачам, проектам и фрилансу.",
   profileImage: "/images/portfolio-me-photo.jpg",
-  experience: "3+",
   url: "https://portfolio-black-eight-gklwvfrewp.vercel.app",
   ogImage: "/images/portfolio-me-photo.jpg",
 } as const;

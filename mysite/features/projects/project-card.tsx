@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import type { ProjectItem } from "@/lib/content/projects";
 import { ProjectMockup } from "./project-mockup";
 
-type ProjectCardVariant = "featured" | "support-tall" | "support-wide" | "support-compact";
+type ProjectCardVariant = "featured" | "support-tall" | "support-wide";
 
 type ProjectCardProps = {
   project: ProjectItem;
@@ -13,7 +13,6 @@ const variantClassName: Record<ProjectCardVariant, string> = {
   featured: "project-card project-card--featured",
   "support-tall": "project-card project-card--support-tall",
   "support-wide": "project-card project-card--support-wide",
-  "support-compact": "project-card project-card--support-compact",
 };
 
 export function ProjectCard({
@@ -28,7 +27,6 @@ export function ProjectCard({
         <ProjectMockup
           type={project.mockup}
           featured={isFeatured}
-          compact={variant === "support-compact"}
         />
       </div>
 

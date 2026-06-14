@@ -157,10 +157,6 @@
   padding: 1rem 1.1rem 1.1rem;
 }
 
-.project-card--support-compact .project-card__body {
-  padding: 0.95rem 1rem 1.05rem;
-}
-
 .project-card__badge {
   align-self: flex-start;
 }
@@ -174,10 +170,6 @@
 
 .project-card--featured .project-card__title {
   font-size: clamp(1.2rem, 1rem + 0.5vw, 1.45rem);
-}
-
-.project-card--support-compact .project-card__title {
-  font-size: 0.98rem;
 }
 
 .project-card__outcome {
@@ -217,13 +209,6 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   line-height: 1.45;
-}
-
-.project-card--support-compact .project-card__description {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 .project-card__tags {

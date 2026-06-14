@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="560" viewBox="0 0 480 560" fill="none">
-  <rect width="480" height="560" rx="32" fill="hsl(0 0% 92%)"/>
-  <circle cx="240" cy="220" r="80" fill="hsl(0 0% 82%)"/>
-  <ellipse cx="240" cy="420" rx="120" ry="90" fill="hsl(0 0% 82%)"/>
-  <text x="240" y="520" text-anchor="middle" fill="hsl(0 0% 55%)" font-family="system-ui, sans-serif" font-size="16">$>B> A:>@></text>
-</svg>

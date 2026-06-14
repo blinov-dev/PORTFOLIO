@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
-  <rect width="640" height="360" rx="16" fill="hsl(0 0% 94%)"/>
-  <rect x="200" y="120" width="240" height="120" rx="8" fill="hsl(0 0% 85%)"/>
-  <text x="320" y="195" text-anchor="middle" fill="hsl(0 0% 55%)" font-family="system-ui, sans-serif" font-size="14">Preview</text>
-</svg>

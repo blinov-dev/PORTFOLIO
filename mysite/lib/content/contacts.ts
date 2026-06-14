@@ -43,7 +43,6 @@ export type SocialItem = {
   label: string;
   href: string;
   icon: ContactIcon;
-  isPlaceholder?: boolean;
 };
 
 export const contacts: ContactItem[] = [
@@ -84,13 +83,6 @@ export const socialLinks: SocialItem[] = [
     icon: "email",
   },
 ];
-
-export function getPrimaryContactHref(): string {
-  return contactConfig.telegram.href;
-}
-
-export const contactCtaText =
-  "Напишите мне в Telegram или на email — обсудим задачу, сроки и формат сотрудничества.";
 
 export const contactFormUnavailableMessage =
   "Отправка формы временно недоступна. Напишите напрямую на email или в Telegram.";
