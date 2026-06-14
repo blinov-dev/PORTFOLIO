@@ -7,7 +7,6 @@ export const runtime = "nodejs";
 
 type ContactRequestBody = {
   name?: string;
-  contact?: string;
   email?: string;
   message?: string;
   consent?: boolean;
@@ -15,7 +14,6 @@ type ContactRequestBody = {
 };
 
 const MAX_NAME = 120;
-const MAX_CONTACT = 120;
 const MAX_EMAIL = 254;
 const MAX_MESSAGE = 5000;
 
@@ -44,21 +42,38 @@ export async function POST(request: Request) {
   }
 
   const name = trim(body.name);
-  const contact = trim(body.contact);
   const email = trim(body.email);
   const message = trim(body.message);
   const consent = body.consent === true;
 
-  if (!name || !contact || !message || !consent) {
+  if (!name || !message || !consent) {
     return NextResponse.json(
       { error: "Заполните обязательные поля и подтвердите согласие." },
       { status: 400 },
     );
   }
 
-  if (name.length > MAX_NAME || contact.length > MAX_CONTACT) {
+  if (!email) {
+    return NextResponse.json({ error: "Укажите email" }, { status: 400 });
+  }
+
+  if (name.length > MAX_NAME) {
     return NextResponse.json(
       { error: "Слишком длинное значение в поле формы." },
+      { status: 400 },
+    );
+  }
+
+  if (email.length > MAX_EMAIL) {
+    return NextResponse.json(
+      { error: "Слишком длинный email." },
+      { status: 400 },
+    );
+  }
+
+  if (!isValidEmail(email)) {
+    return NextResponse.json(
+      { error: "Укажите корректный email" },
       { status: 400 },
     );
   }
@@ -66,13 +81,6 @@ export async function POST(request: Request) {
   if (message.length > MAX_MESSAGE) {
     return NextResponse.json(
       { error: "Сообщение слишком длинное." },
-      { status: 400 },
-    );
-  }
-
-  if (email && (email.length > MAX_EMAIL || !isValidEmail(email))) {
-    return NextResponse.json(
-      { error: "Укажите корректный email или оставьте поле пустым." },
       { status: 400 },
     );
   }
@@ -90,7 +98,6 @@ export async function POST(request: Request) {
 
   const { text, html, subject } = buildContactEmail({
     name,
-    contact,
     email,
     message,
   });
@@ -109,7 +116,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: env.CONTACT_FROM_EMAIL,
       to: env.CONTACT_TO_EMAIL,
-      replyTo: email || undefined,
+      replyTo: email,
       subject,
       text,
       html,

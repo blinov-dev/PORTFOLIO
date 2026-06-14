@@ -130,7 +130,6 @@ export function ContactForm() {
           message: fields.message.trim(),
           consent: fields.consent,
           website: fields.website,
-          contact: fields.email.trim(),
         }),
       });
 
