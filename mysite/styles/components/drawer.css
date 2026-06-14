@@ -1,0 +1,25 @@
+@keyframes drawer-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.drawer-panel {
+  animation: drawer-slide-in 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.drawer-overlay {
+  animation: drawer-overlay-in 0.24s ease;
+}
+
+@keyframes drawer-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

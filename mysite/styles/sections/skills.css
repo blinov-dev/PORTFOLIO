@@ -1,0 +1,139 @@
+/* Skills — mosaic grid visual block */
+.skills-visual {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  padding: 1rem;
+  border: 1px solid hsl(var(--glass-border));
+  box-shadow: var(--glass-shadow);
+}
+
+@media (min-width: 640px) {
+  .skills-visual {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .skills-visual {
+    padding: 1.5rem;
+  }
+}
+
+.skills-visual__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 48% 40% at 14% 10%,
+      hsl(var(--primary) / 0.12),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 42% 36% at 86% 14%,
+      hsl(var(--secondary) / 0.08),
+      transparent 70%
+    );
+  opacity: 0.75;
+}
+
+.skills-mosaic {
+  position: relative;
+  z-index: 1;
+}
+
+.skill-tilt-tile {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  min-height: 5.5rem;
+}
+
+.skill-tilt-tile__surface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--glass-border));
+  background: hsl(var(--glass-bg) / 0.94);
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 hsl(var(--glass-highlight));
+  transition:
+    border-color 0.24s ease,
+    box-shadow 0.24s ease,
+    background 0.24s ease;
+}
+
+.skill-tilt-tile:hover .skill-tilt-tile__surface,
+.skill-tilt-tile:focus-within .skill-tilt-tile__surface,
+.skill-tilt-tile--hovered .skill-tilt-tile__surface {
+  border-color: hsl(var(--primary) / 0.38);
+  background: hsl(var(--primary) / 0.08);
+  box-shadow:
+    var(--glass-shadow),
+    0 18px 42px hsl(var(--primary) / 0.18),
+    0 0 28px color-mix(in srgb, var(--skill-brand, hsl(var(--primary))) 22%, transparent),
+    inset 0 1px 0 hsl(var(--glass-highlight));
+}
+
+.skill-tilt-tile__svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  color: hsl(var(--primary) / 0.55);
+  transition: color 0.28s ease;
+}
+
+.skill-tilt-tile--lg .skill-tilt-tile__svg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.skill-tilt-tile--md .skill-tilt-tile__svg {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.skill-tilt-tile--sm .skill-tilt-tile__svg {
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
+.skill-tilt-tile:hover .skill-tilt-tile__svg,
+.skill-tilt-tile:focus-within .skill-tilt-tile__svg,
+.skill-tilt-tile--hovered .skill-tilt-tile__svg {
+  color: var(--skill-brand, hsl(var(--primary)));
+}
+
+.skill-tilt-tile__label {
+  max-width: 100%;
+  padding: 0 0.35rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+  text-wrap: balance;
+  transition: color 0.24s ease;
+}
+
+.skill-tilt-tile--lg .skill-tilt-tile__label {
+  font-size: 0.75rem;
+}
+
+.skill-tilt-tile--md .skill-tilt-tile__label {
+  font-size: 0.6875rem;
+}
+
+.skill-tilt-tile:hover .skill-tilt-tile__label,
+.skill-tilt-tile:focus-within .skill-tilt-tile__label,
+.skill-tilt-tile--hovered .skill-tilt-tile__label {
+  color: hsl(var(--foreground));
+}
+

@@ -1,0 +1,82 @@
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card-hover,
+  .btn-gradient,
+  .btn-glass,
+  .drawer-panel,
+  .drawer-overlay,
+  .theme-toggle-knob,
+  .theme-toggle-track,
+  .theme-toggle-icon,
+  .logo-brand,
+  .nav-link,
+  .header-icon-btn,
+  .glass-header,
+  .hero-portrait-frame,
+  .hero-capability,
+  .hero-floating-badge,
+  .hero-visual-panel,
+  .hero-photo-column,
+  .hero-photo-shell,
+  .hero-ambient-glow,
+  .skills-visual,
+  .skill-tilt-tile,
+  .process-step,
+  .process-step__card,
+  .services-tab,
+  .services-details,
+  .services-accordion__panel,
+  .services-accordion__chevron {
+    transition: none;
+    animation: none;
+  }
+
+  .card-hover:hover,
+  .logo-brand:hover,
+  .nav-link:hover,
+  .header-icon-btn:hover,
+  .hero-visual:hover .hero-portrait-frame,
+  .hero-visual:hover .hero-visual-panel,
+  .hero-visual:hover .hero-photo-shell,
+  .hero-capability:hover,
+  .hero-visual:hover .hero-floating-badge,
+  .hero-visual:hover .hero-badge--exp,
+  .hero-visual:hover .hero-badge--open,
+  .skill-tilt-tile:hover {
+    transform: none;
+    filter: none;
+  }
+
+  .process-step__card:hover {
+    transform: none;
+  }
+
+  .services-tab:hover,
+  .services-tab:focus-visible {
+    transform: none;
+  }
+
+  .nav-link--drawer:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card--featured,
+  .project-mockup {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-card--featured:hover {
+    transform: none;
+  }
+
+  .project-card--featured:hover .project-mockup {
+    transform: none;
+  }
+}

@@ -5,7 +5,6 @@ import {
   projectsSectionDescription,
 } from "@/lib/content/projects";
 import { ProjectCard } from "./project-card";
-import "@/styles/projects.css";
 
 const SUPPORT_LAYOUT = ["store", "onboarding", "uikit"] as const;
 

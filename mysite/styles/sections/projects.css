@@ -629,19 +629,3 @@
   background: hsl(var(--secondary) / 0.18);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .project-card,
-  .project-card--featured,
-  .project-mockup {
-    transition: none;
-  }
-
-  .project-card:hover,
-  .project-card--featured:hover {
-    transform: none;
-  }
-
-  .project-card--featured:hover .project-mockup {
-    transform: none;
-  }
-}

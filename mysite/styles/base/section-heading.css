@@ -1,0 +1,77 @@
+/* Section headings — gradient accent behind text */
+.section-heading {
+  font-size: clamp(1.75rem, 1.25rem + 1.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: hsl(var(--foreground));
+  text-wrap: balance;
+}
+
+.section-heading__inner {
+  --section-heading-accent-left: 0.55em;
+  display: inline;
+  padding-inline-end: 0.05em;
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--primary) / 0.32),
+    hsl(var(--secondary) / 0.48)
+  );
+  background-repeat: no-repeat;
+  background-size: calc(100% - var(--section-heading-accent-left)) 0.42em;
+  background-position:
+    var(--section-heading-accent-left)
+    calc(100% - 0.02em);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-image 0.2s ease;
+}
+
+.section-heading:not(.section-heading--accent) .section-heading__inner {
+  background-image: none;
+}
+
+.section-heading--accent:hover .section-heading__inner,
+.section-heading--accent:focus-within .section-heading__inner {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--primary) / 0.38),
+    hsl(var(--secondary) / 0.54)
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .section-heading--accent .section-heading__inner {
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--primary) / 0.38),
+      hsl(var(--secondary) / 0.5)
+    );
+  }
+
+  :root:not([data-theme='light']) .section-heading--accent:hover .section-heading__inner,
+  :root:not([data-theme='light']) .section-heading--accent:focus-within .section-heading__inner {
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--primary) / 0.44),
+      hsl(var(--secondary) / 0.56)
+    );
+  }
+}
+
+[data-theme='dark'] .section-heading--accent .section-heading__inner {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--primary) / 0.38),
+    hsl(var(--secondary) / 0.5)
+  );
+}
+
+[data-theme='dark'] .section-heading--accent:hover .section-heading__inner,
+[data-theme='dark'] .section-heading--accent:focus-within .section-heading__inner {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--primary) / 0.44),
+    hsl(var(--secondary) / 0.56)
+  );
+}

@@ -1,0 +1,73 @@
+/* Theme toggle — Liquid Glass pill switch */
+.theme-toggle-track {
+  --toggle-width: 74px;
+  --toggle-height: 42px;
+  --toggle-padding: 4px;
+  --toggle-knob: 32px;
+  --toggle-shift: 32px;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  padding: var(--toggle-padding);
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--glass-border));
+  box-shadow: var(--glass-shadow);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover .theme-toggle-track {
+  border-color: hsl(var(--primary) / 0.35);
+  box-shadow: var(--glass-shadow), 0 0 16px hsl(var(--primary) / 0.12);
+}
+
+.theme-toggle-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--muted-foreground));
+  transition: color 0.25s ease;
+}
+
+.theme-toggle-icon.is-active {
+  color: hsl(var(--primary-foreground));
+}
+
+.theme-toggle-icon-moon svg {
+  transform: translateX(-0.5px);
+}
+
+.theme-toggle-knob {
+  position: absolute;
+  top: var(--toggle-padding);
+  left: var(--toggle-padding);
+  z-index: 1;
+  width: var(--toggle-knob);
+  height: var(--toggle-knob);
+  border-radius: 9999px;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 14px hsl(var(--primary) / 0.35);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+
+.theme-toggle-knob[data-theme-state="dark"] {
+  transform: translateX(var(--toggle-shift));
+  box-shadow: 0 0 16px hsl(var(--secondary) / 0.35);
+}
+
+.theme-toggle:focus-visible .theme-toggle-knob {
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 14px hsl(var(--primary) / 0.4);
+}
+
+/* Header / navigation */
+.theme-toggle {
+  cursor: pointer;
+}

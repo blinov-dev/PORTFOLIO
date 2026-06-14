@@ -1,0 +1,45 @@
+.btn-gradient {
+  background: var(--gradient-primary);
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 2px 12px hsl(265 62% 55% / 0.25);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.btn-gradient:hover {
+  background: var(--gradient-primary-hover);
+  box-shadow: 0 4px 20px hsl(265 62% 55% / 0.35);
+}
+
+.btn-gradient:active {
+  transform: scale(0.98);
+}
+
+.btn-glass {
+  background: hsl(var(--glass-bg));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--glass-border));
+  color: hsl(var(--foreground));
+  box-shadow: var(--glass-shadow);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-glass:hover {
+  background: hsl(var(--muted) / 0.8);
+  border-color: hsl(var(--primary) / 0.35);
+}
+
+.btn-glass:active {
+  transform: scale(0.98);
+}
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px hsl(265 40% 40% / 0.1),
+    inset 0 1px 0 hsl(var(--glass-highlight));
+  border-color: hsl(var(--primary) / 0.2);
+}
