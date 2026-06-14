@@ -100,11 +100,7 @@ export function MobileMenu({ items }: MobileMenuProps) {
             className="drawer-panel glass-surface fixed right-0 top-0 z-[101] flex h-dvh w-[min(92vw,22rem)] flex-col border-l border-border/60 shadow-2xl"
           >
             <div className="flex items-center justify-between gap-3 border-b border-border/50 px-4 py-4 sm:px-5">
-              <Logo
-                className="min-w-0 shrink"
-                gradientId="drawer"
-                onNavigate={close}
-              />
+              <Logo className="min-w-0 shrink" onNavigate={close} />
               <div className="flex shrink-0 items-center gap-2">
                 <ThemeToggle />
                 <button
