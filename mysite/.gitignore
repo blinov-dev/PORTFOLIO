@@ -33,6 +33,10 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example
+.env*.local
+
+# archives
+*.zip
 
 # vercel
 .vercel
@@ -41,3 +45,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+.cursor
+.agents
+.impeccable/
+AGENTS.md
+CLAUDE.md
+README_CURSOR_PACK_v1.md
